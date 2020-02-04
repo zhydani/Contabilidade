@@ -1,7 +1,7 @@
 # topicos-II
 Cadeira de Tópicos em Programação II
 
-##Roteiro
+## Roteiro
    - PrimeFaces
    - PostgreSQL
    - JPA
