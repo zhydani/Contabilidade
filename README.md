@@ -1,5 +1,5 @@
 # Topicos em Programação II
-Cadeira de Tópicos em Programação II - Projeto
+Cadeira de Tópicos em Programação II, quarto período de sistemas de informação na UNITINS
 
 ## Ementa
    - Frameworks component-based
