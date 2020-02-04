@@ -1,4 +1,4 @@
-# topicos-II
+# Topicos em Programação II
 Cadeira de Tópicos em Programação II - Projeto
 
 ## Ementa
