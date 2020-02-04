@@ -1,5 +1,5 @@
 # topicos-II
-Cadeira de Tópicos em Programação II
+Cadeira de Tópicos em Programação II - Projeto
 
 ## Ementa
    - Frameworks component-based
