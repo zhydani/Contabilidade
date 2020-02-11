@@ -19,4 +19,4 @@ Cadeira de Tópicos em Programação II, quarto período de sistemas de informa�
    - git
 
 ## Projeto
-A definir
+Sistema de lançamentos de contabilidade para fins de consulta
