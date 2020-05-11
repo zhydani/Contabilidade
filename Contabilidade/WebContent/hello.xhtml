@@ -8,19 +8,5 @@
 </h:head>
 <h:body>
 	<h1>Hello, world!</h1>
-	<h:form>
-		<h:outputLabel value="Informe o nome: " />
-		<h:inputText value="#{helloController.nome1}"/>
-		<h:commandButton value="Executar"/>
-		<h:outputLabel value="Olá, #{helloController.nome1}" />
-	</h:form>
-	<!-- Teste com Primefaces -->
-	<h:form>
-		<p:outputLabel value="Informe o nome: " />
-		<p:inputText id="itNome2" value="#{helloController.nome2}"/>
-		<p:commandButton value="Executar" process="itNome2" update="label2"/>
-		<p:outputLabel id="label2" value="Olá, #{helloController.nome2}" />
-	</h:form>
-	
 </h:body>
 </html>
