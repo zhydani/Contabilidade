@@ -6,26 +6,26 @@
 
 	<ui:define name="head">
 		<style type="text/css">
-			.ui-panelgrid.form-elements .ui-grc-2 {
-				padding-left: 60px;
-			}
-			
-			@media ( max-width :1024px) {
-				.ui-panelgrid.form-elements .ui-grc-2 {
-					padding-left: 20px;
-				}
-			}
-			
-			@media ( max-width :640px) {
-				.ui-panelgrid.form-elements .ui-grc-2 {
-					padding-left: 6px;
-				}
-			}
-			
-			.dialogDemo label {
-				line-height: 2.1em;
-			}
-			</style>
+.ui-panelgrid.form-elements .ui-grc-2 {
+	padding-left: 60px;
+}
+
+@media ( max-width :1024px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 20px;
+	}
+}
+
+@media ( max-width :640px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 6px;
+	}
+}
+
+.dialogDemo label {
+	line-height: 2.1em;
+}
+</style>
 	</ui:define>
 
 	<ui:define name="content">
@@ -51,50 +51,88 @@
 						<div class="card card-w-title">
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
+
 								<p:commandLink value="Nome: " onclick="PF('listagem').show();">
 									<p:message for="itNome" escape="false" />
 								</p:commandLink>
-								<p:inputText id="itNome" value="#{alunoController.entity.nome}"
-									required="true" requiredMessage="Informe o nome." />
-
-								<p:outputLabel value="Matricula: ">
-									<p:message for="itMatricula" escape="false" />
-								</p:outputLabel>
-								<p:inputText id="itMatricula"
-									value="#{alunoController.entity.matricula}" />
+								<p:inputText id="itNome"
+									value="#{funcionarioController.entity.nome}" required="true"
+									requiredMessage="Informe o nome." />
 
 								<p:outputLabel value="Data de Aniversário:" />
-								<p:calendar value="#{alunoController.entity.dataAniversario}"
+								<p:calendar
+									value="#{funcionarioController.entity.dataAniversario}"
 									pattern="dd/MM/yyyy" />
 
-								<p:outputLabel value="E-mail:" />
-								<p:inputText value="#{alunoController.entity.email}" />
-								
-								<p:commandLink value="Estado: " 
-									actionListener="#{alunoController.abrirEstadoListing}" 
+								<p:outputLabel value="CPF: ">
+									<p:message for="itCPF" escape="false" />
+								</p:outputLabel>
+								<p:inputText id="itCPF"
+									value="#{funcionarioController.entity.cpf}" />
+
+								<p:outputLabel value="RG:" />
+								<p:inputText value="#{funcionarioController.entity.rg}" />
+
+								<p:outputLabel value="Função:" />
+								<p:inputText value="#{funcionarioController.entity.funcao}" />
+
+								<p:outputLabel value="Salário:" />
+								<p:inputText value="#{funcionarioController.entity.salario}" />
+
+								<p:outputLabel value="Data de Admissão:" />
+								<p:calendar value="#{funcionarioController.entity.dataAdmissao}"
+									pattern="dd/MM/yyyy" />
+
+								<p:outputLabel value="Data de Recisão:" />
+								<p:calendar value="#{funcionarioController.entity.dataRecisao}"
+									pattern="dd/MM/yyyy" />
+
+								<p:outputLabel value="Data de Férias:" />
+								<p:calendar value="#{funcionarioController.entity.dataFerias}"
+									pattern="dd/MM/yyyy" />
+
+								<p:outputLabel value="Data de Afastamento:" />
+								<p:calendar value="#{funcionarioController.entity.dataAfastamento}"
+									pattern="dd/MM/yyyy" />
+
+								<p:commandLink value="Estado Civil: "
+									actionListener="#{funcionarioController.abrirEstadoCivilListing}"
 									process="@this" update="@none">
-									
-									<p:ajax event="dialogReturn" 
-										listener="#{alunoController.obterEstadoListing}" 
-										update="itNomeEstado" />
-									
+
+									<p:ajax event="dialogReturn"
+										listener="#{funcionarioController.obterEstadoCivilListing}"
+										update="itNomeEstadoCivil" />
+
 								</p:commandLink>
-								<p:inputText id="itNomeEstado" value="#{alunoController.entity.estado.nome}"/>
-								
+								<p:inputText id="itNomeEstadoCivil"
+									value="#{funcionarioController.entity.estadocivil.nome}" />
+
+
+								<p:commandLink value="Empresa: "
+									actionListener="#{funcionarioController.abrirEmpresaListing}"
+									process="@this" update="@none">
+
+									<p:ajax event="dialogReturn"
+										listener="#{funcionarioController.obterEmpresaListing}"
+										update="itRazaoSocialEmpresa" />
+
+								</p:commandLink>
+								<p:inputText id="itRazaoSocialEmpresa"
+									value="#{funcionarioController.entity.empresa.razaosocial}" />
+
 							</p:panelGrid>
 
-							
+
 						</div>
 					</div>
 				</div>
 				<p:toolbar>
 					<f:facet name="left">
 						<p:commandButton value="Salvar" icon="pi pi-check" process="@form"
-							update="@form" action="#{alunoController.salvar}" />
+							update="@form" action="#{funcionarioController.salvar}" />
 
-						<p:commandButton value="Limpar" 
-							process="@this" update="panel"
-							action="#{alunoController.limpar}">
+						<p:commandButton value="Limpar" process="@this" update="panel"
+							action="#{funcionarioController.limpar}">
 							<p:ajax update="@form" resetValues="true" />
 						</p:commandButton>
 
@@ -103,59 +141,75 @@
 					<f:facet name="right">
 						<p:commandButton value="Excluir" icon="pi pi-trash"
 							process="@form" update="panel"
-							action="#{alunoController.excluir}">
+							action="#{funcionarioController.excluir}">
 							<p:confirm header="Confirmação" message="Confirma a exclusão?" />
 						</p:commandButton>
 					</f:facet>
 				</p:toolbar>
 			</p:panel>
 
-			<p:confirmDialog global="true" 
-				showEffect="fade" 
-				hideEffect="fade">
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 				<p:commandButton value="Sim" type="button"
 					styleClass="ui-confirmdialog-yes" />
 				<p:commandButton value="Não" type="button"
 					styleClass="ui-confirmdialog-no" />
 			</p:confirmDialog>
 
-			<p:dialog header="Listagem de Alunos" 
-				widgetVar="listagem"
-				height="300" width="90%"
-				modal="true" resizable="true">
+			<p:dialog header="Listagem de Funcionarios" widgetVar="listagem"
+				height="300" width="90%" modal="true" resizable="true">
 				<p:outputLabel value="Nome: " />
-				<p:inputText id="itFiltro" value="#{alunoController.filtro}" />
+				<p:inputText id="itFiltro" value="#{funcionarioController.filtro}" />
 				<p:commandButton value="Pesquisar"
-					actionListener="#{alunoController.pesquisar}"
+					actionListener="#{funcionarioController.pesquisar}"
 					process="@this itFiltro" update="dtListagem" />
 				<br />
 				<p:dataTable id="dtListagem" var="entity"
-					value="#{alunoController.listaAluno}">
+					value="#{funcionarioController.listaFuncionario}">
 					<p:column headerText="Id">
 						<h:outputText value="#{entity.id}" />
 					</p:column>
 
 					<p:column headerText="Nome">
 						<p:commandLink value="#{entity.nome}"
-							actionListener="#{alunoController.editar(entity.id)}" 
-							process="@this" update="@form" resetValues="true"/>
-					</p:column>
-
-					<p:column headerText="Matricula">
-						<h:outputText value="#{entity.matricula}" />
+							actionListener="#{funcionarioController.editar(entity.id)}"
+							process="@this" update="@form" resetValues="true" />
 					</p:column>
 
 					<p:column headerText="Data Aniversário">
 						<h:outputText value="#{entity.dataAniversario}" />
 					</p:column>
 
-					<p:column headerText="E-Mail">
-						<h:outputText value="#{entity.email}" />
+					<p:column headerText="CPF">
+						<h:outputText value="#{entity.cpf}" />
+					</p:column>
+					
+					<p:column headerText="RG">
+						<h:outputText value="#{entity.rg}" />
+					</p:column>
+					
+					<p:column headerText="Função">
+						<h:outputText value="#{entity.funcao}" />
+					</p:column>
+					
+					<p:column headerText="Salário">
+						<h:outputText value="#{entity.salario}" />
+					</p:column>
+					
+					<p:column headerText="Data Admissão">
+						<h:outputText value="#{entity.dataAdmissao}" />
+					</p:column>
+					<p:column headerText="Data Recisão">
+						<h:outputText value="#{entity.dataRecisao}" />
+					</p:column>
+					<p:column headerText="Data Férias">
+						<h:outputText value="#{entity.dataFerias}" />
+					</p:column>
+					<p:column headerText="Data Afastamento">
+						<h:outputText value="#{entity.dataAfastamento}" />
 					</p:column>
 				</p:dataTable>
 			</p:dialog>
-			
+
 		</h:form>
 	</ui:define>
 </ui:composition>
-		

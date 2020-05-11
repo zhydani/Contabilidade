@@ -10,10 +10,12 @@ import javax.persistence.Query;
 
 import org.primefaces.event.SelectEvent;
 
-//import controller.listing.EstadoListing;
+import controller.listing.EmpresaListing;
+import controller.listing.EstadoCivilListing;
 import factory.JPAFactory;
+import model.Empresa;
+import model.EstadoCivil;
 import model.Funcionario;
-//import model.Estado;
 import repository.FuncionarioRepository;
 
 @Named
@@ -26,37 +28,42 @@ public class FuncionarioController extends Controller<Funcionario> {
 	private List<Funcionario> listaFuncionario;
 	
 	public void pesquisar() {
-//		EntityManager em = JPAFactory.getEntityManager();
-//		Query query = em.createQuery(
-//				"Select a "
-//			  + "From Funcionario a "
-//			  + "Where upper(a.nome) like upper(:filtro)");
-//		query.setParameter("filtro", "%"+ getFiltro() + "%");
-//		listaFuncionario = query.getResultList();
-		
 		FuncionarioRepository repo = new FuncionarioRepository();
 		listaFuncionario = repo.findByNome(getFiltro());
 	}
 	
-//	public void abrirEstadoListing() {
-//		EstadoListing listing = new EstadoListing();
-//		listing.open();
-//	}
-//	
-//	public void obterEstadoListing(SelectEvent event) {
-//        Estado entity = (Estado) event.getObject();
-//        getEntity().setEstado(entity);
-//    }
-//	
-//	@Override
-//	public Funcionario getEntity() {
-//		if (entity == null) {
-//			entity = new Funcionario();
-//			entity.setEstado(new Estado());
-//		}
-//		
-//		return entity;
-//	}
+//	ESTADO CIVIL
+	public void abrirEstadoCivilListing() {
+		EstadoCivilListing listing = new EstadoCivilListing();
+		listing.open();
+	}
+	
+	public void obterEstadoCivilListing(SelectEvent event) {
+        EstadoCivil entity = (EstadoCivil) event.getObject();
+        getEntity().setEstadocivil(entity);
+    }
+	
+//	EMPRESA
+	public void abrirEmpresaListing() {
+		EmpresaListing listing = new EmpresaListing();
+		listing.open();
+	}
+	
+	public void obterEmpresaListing(SelectEvent event) {
+        Empresa entity = (Empresa) event.getObject();
+        getEntity().setEmpresa(entity);
+    }
+	
+	@Override
+	public Funcionario getEntity() {
+		if (entity == null) {
+			entity = new Funcionario();
+			entity.setEstadocivil(new EstadoCivil());
+			entity.setEmpresa(new Empresa());
+		}
+		
+		return entity;
+	}
 	
 	public String getFiltro() {
 		return filtro;
@@ -72,10 +79,5 @@ public class FuncionarioController extends Controller<Funcionario> {
 		return listaFuncionario;
 	}
 
-	@Override
-	public Funcionario getEntity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

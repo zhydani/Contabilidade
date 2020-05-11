@@ -35,19 +35,19 @@ public class Funcionario extends DefaultEntity<Funcionario> {
 	@Column(length = 20, nullable = false)
 	private Double salario;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Date dataRecisao;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Date dataFerias;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Date dataAfastamento;
 
