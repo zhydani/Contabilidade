@@ -18,46 +18,46 @@ public class Funcionario extends DefaultEntity<Funcionario> {
 
 	@Column(length = 100, nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataAniversario;
-	
+
 	@Column(length = 11, nullable = false)
 	private String cpf;
-	
+
 	@Column(length = 50, nullable = false)
 	private String rg;
-	
+
 	@Column(length = 200, nullable = false)
 	private String funcao;
-	
-	@Column(length = 200, nullable = false)
-	private String estadocivil;
-	
+
 	@Column(length = 20, nullable = false)
 	private Double salario;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataAdmissao;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataRecisao;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataFerias;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataAfastamento;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idempresa")
 	private Empresa empresa;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "idestadocivil")
+	private EstadoCivil estadocivil;
 
 	public String getNome() {
 		return nome;
@@ -99,11 +99,11 @@ public class Funcionario extends DefaultEntity<Funcionario> {
 		this.funcao = funcao;
 	}
 
-	public String getEstadocivil() {
+	public EstadoCivil getEstadocivil() {
 		return estadocivil;
 	}
 
-	public void setEstadocivil(String estadocivil) {
+	public void setEstadocivil(EstadoCivil estadocivil) {
 		this.estadocivil = estadocivil;
 	}
 
@@ -155,6 +155,4 @@ public class Funcionario extends DefaultEntity<Funcionario> {
 		this.empresa = empresa;
 	}
 
-	
-	
 }
