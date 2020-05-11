@@ -4,19 +4,19 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import model.Aluno;
+import model.Empresa;
 
-public class AlunoRepository extends Repository<Aluno> {
+public class EmpresaRepository extends Repository<Empresa> {
 
-	public List<Aluno> findByNome(String nome) {
+	public List<Empresa> findByNome(String nome) {
 
 		StringBuffer jpql = new StringBuffer();
 		jpql.append("SELECT ");
-		jpql.append("  a ");
+		jpql.append("  e ");
 		jpql.append("FROM ");
-		jpql.append("  Aluno a ");
+		jpql.append("  Empresa e ");
 		jpql.append("WHERE ");
-		jpql.append("  upper(a.nome) like upper(:nome) ");
+		jpql.append("  upper(e.nome) like upper(:nome) ");
 
 		Query query = getEntityManager().createQuery(jpql.toString());
 

@@ -12,21 +12,21 @@ import javax.persistence.EntityManager;
 import org.primefaces.PrimeFaces;
 
 import factory.JPAFactory;
-import model.Estado;
-import repository.EstadoRepository;
+import model.Empresa;
+import repository.EmpresaRepository;
 
 @Named
 @ViewScoped
-public class EstadoListing extends Listing<Estado> {
+public class EmpresaListing extends Listing<Empresa> {
 
 	private static final long serialVersionUID = 2921753168434872389L;
-	private List<Estado> list;
+	private List<Empresa> list;
 	private String filtro;
 	
 	@Override
-	public Estado getEntity() {
+	public Empresa getEntity() {
 		if (entity == null)
-			entity = new Estado();
+			entity = new Empresa();
 		return entity;
 	}
 	
@@ -40,29 +40,29 @@ public class EstadoListing extends Listing<Estado> {
         options.put("contentWidth", "100%");
         options.put("contentHeight", "100%");  
         // ligacao com a pagina xhtml
-        PrimeFaces.current().dialog().openDynamic("estadolisting", options, null);
+        PrimeFaces.current().dialog().openDynamic("empresalisting", options, null);
 	}
 
 	public void pesquisar() {
-		EstadoRepository repo = new EstadoRepository();
+		EmpresaRepository repo = new EmpresaRepository();
 		setList(repo.findByNome(getFiltro()));
 	}
 	
 	public void select(int id) {
 		EntityManager em = JPAFactory.getEntityManager();
-		setEntity((Estado) em.find(Estado.class, id));
+		setEntity((Empresa) em.find(Empresa.class, id));
 		
 		// retorna o objeto via dialogreturn e finaliza o dialog
 		PrimeFaces.current().dialog().closeDynamic(getEntity());
 	}
 	
-	public List<Estado> getList() {
+	public List<Empresa> getList() {
 		if (list == null)
-			list = new ArrayList<Estado>();
+			list = new ArrayList<Empresa>();
 		return list;
 	}
 
-	public void setList(List<Estado> list) {
+	public void setList(List<Empresa> list) {
 		this.list = list;
 	}
 
