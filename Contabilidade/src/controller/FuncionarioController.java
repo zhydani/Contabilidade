@@ -5,17 +5,14 @@ import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import org.primefaces.event.SelectEvent;
 
+import controller.listing.FuncionarioListing;
 import controller.listing.EmpresaListing;
 import controller.listing.EstadoCivilListing;
-import factory.JPAFactory;
+import model.Funcionario;
 import model.Empresa;
 import model.EstadoCivil;
-import model.Funcionario;
 import repository.FuncionarioRepository;
 
 @Named
@@ -31,6 +28,21 @@ public class FuncionarioController extends Controller<Funcionario> {
 		FuncionarioRepository repo = new FuncionarioRepository();
 		listaFuncionario = repo.findByNome(getFiltro());
 	}
+	
+//	FUNCIONARIO
+	public void abrirFuncionarioListing() {
+		FuncionarioListing listing = new FuncionarioListing();
+		listing.open();
+	}
+	
+	public void obterFuncionarioListing(SelectEvent event) {
+        Funcionario entity = (Funcionario) event.getObject();
+        setEntity(entity);
+    	if (getEntity().getEstadocivil() == null)
+			getEntity().setEstadocivil(new EstadoCivil());
+    	if (getEntity().getEmpresa() == null)
+			getEntity().setEmpresa(new Empresa());
+    }
 	
 //	ESTADO CIVIL
 	public void abrirEstadoCivilListing() {

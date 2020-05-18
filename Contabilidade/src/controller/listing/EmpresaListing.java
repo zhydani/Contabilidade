@@ -7,11 +7,9 @@ import java.util.Map;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
 
 import org.primefaces.PrimeFaces;
 
-import factory.JPAFactory;
 import model.Empresa;
 import repository.EmpresaRepository;
 
@@ -23,11 +21,8 @@ public class EmpresaListing extends Listing<Empresa> {
 	private List<Empresa> list;
 	private String filtro;
 	
-	@Override
-	public Empresa getEntity() {
-		if (entity == null)
-			entity = new Empresa();
-		return entity;
+	public EmpresaListing() {
+		super(Empresa.class);
 	}
 	
 	public void open() {
@@ -48,14 +43,14 @@ public class EmpresaListing extends Listing<Empresa> {
 		setList(repo.findByNome(getFiltro()));
 	}
 	
-	public void select(int id) {
-		EntityManager em = JPAFactory.getEntityManager();
-		setEntity((Empresa) em.find(Empresa.class, id));
-		
-		// retorna o objeto via dialogreturn e finaliza o dialog
-		PrimeFaces.current().dialog().closeDynamic(getEntity());
-	}
-	
+//	public void select(int id) {
+//		EntityManager em = JPAFactory.getEntityManager();
+//		setEntity((Empresa) em.find(Empresa.class, id));
+//		
+//		// retorna o objeto via dialogreturn e finaliza o dialog
+//		PrimeFaces.current().dialog().closeDynamic(getEntity());
+//	}
+
 	public List<Empresa> getList() {
 		if (list == null)
 			list = new ArrayList<Empresa>();

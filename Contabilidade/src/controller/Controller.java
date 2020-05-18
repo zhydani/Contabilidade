@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import application.RepositoryException;
 import application.Util;
+import application.ValidationException;
 import factory.JPAFactory;
 import model.DefaultEntity;
 import repository.Repository;
@@ -28,6 +29,8 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 	public void salvar() {
 		Repository<T> r = new Repository<T>();
 		try {
+			if (getEntity().getValidation() != null)
+				getEntity().getValidation().validate(getEntity());
 			r.beginTransaction();
 			r.salvar(getEntity());
 			r.commitTransaction();	
@@ -35,6 +38,10 @@ public abstract class Controller<T extends DefaultEntity<T>> implements Serializ
 			e.printStackTrace();
 			r.rollbackTransaction();
 			Util.addMessageError("Problema ao salvar.");
+			return;
+		} catch (ValidationException e) {
+			System.out.println(e.getMessage());
+			Util.addMessageError(e.getMessage());
 			return;
 		}
 		limpar();

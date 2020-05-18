@@ -3,6 +3,8 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import model.validation.Validation;
+
 @Entity
 public class EstadoCivil extends DefaultEntity<EstadoCivil> {
 
@@ -17,6 +19,12 @@ public class EstadoCivil extends DefaultEntity<EstadoCivil> {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	@Override
+	public Validation<EstadoCivil> getValidation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

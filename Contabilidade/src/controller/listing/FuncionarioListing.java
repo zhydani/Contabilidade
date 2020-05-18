@@ -10,19 +10,20 @@ import javax.inject.Named;
 
 import org.primefaces.PrimeFaces;
 
-import model.EstadoCivil;
-import repository.EstadoCivilRepository;
+import model.Funcionario;
+import repository.FuncionarioRepository;
 
 @Named
 @ViewScoped
-public class EstadoCivilListing extends Listing<EstadoCivil> {
+public class FuncionarioListing extends Listing<Funcionario> {
 
 	private static final long serialVersionUID = 2921753168434872389L;
-	private List<EstadoCivil> list;
+	private List<Funcionario> list;
 	private String filtro;
 	
-	public EstadoCivilListing() {
-		super(EstadoCivil.class);
+
+	public FuncionarioListing() {
+		super(Funcionario.class);
 	}
 	
 	public void open() {
@@ -35,30 +36,22 @@ public class EstadoCivilListing extends Listing<EstadoCivil> {
         options.put("contentWidth", "100%");
         options.put("contentHeight", "100%");  
         // ligacao com a pagina xhtml
-        PrimeFaces.current().dialog().openDynamic("estadocivillisting", options, null);
+        PrimeFaces.current().dialog().openDynamic("funcionariolisting", options, null);
 	}
 
 	public void pesquisar() {
-		EstadoCivilRepository repo = new EstadoCivilRepository();
+		FuncionarioRepository repo = new FuncionarioRepository();
 		setList(repo.findByNome(getFiltro()));
 	}
 	
-//	public void select(int id) {
-//		EntityManager em = JPAFactory.getEntityManager();
-//		setEntity((EstadoCivil) em.find(EstadoCivil.class, id));
-//		
-//		// retorna o objeto via dialogreturn e finaliza o dialog
-//		PrimeFaces.current().dialog().closeDynamic(getEntity());
-//	}
-	
-	public List<EstadoCivil> getList() {
+
+	public List<Funcionario> getList() {
 		if (list == null)
-			list = new ArrayList<EstadoCivil>();
+			list = new ArrayList<Funcionario>();
 		return list;
 	}
 
-	
-	public void setList(List<EstadoCivil> list) {
+	public void setList(List<Funcionario> list) {
 		this.list = list;
 	}
 
@@ -69,5 +62,6 @@ public class EstadoCivilListing extends Listing<EstadoCivil> {
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
 	}
+
 
 }

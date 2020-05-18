@@ -2,14 +2,15 @@ package model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import model.validation.FuncionarioValidation;
+import model.validation.Validation;
 
 @Entity
 public class Funcionario extends DefaultEntity<Funcionario> {
@@ -153,6 +154,11 @@ public class Funcionario extends DefaultEntity<Funcionario> {
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+
+	@Override
+	public Validation<Funcionario> getValidation() {
+		return new FuncionarioValidation();
 	}
 
 }

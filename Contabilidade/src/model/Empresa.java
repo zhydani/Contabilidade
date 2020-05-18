@@ -3,6 +3,8 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import model.validation.Validation;
+
 @Entity
 public class Empresa extends DefaultEntity<Empresa> {
 
@@ -24,6 +26,11 @@ public class Empresa extends DefaultEntity<Empresa> {
 	}
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+	@Override
+	public Validation<Empresa> getValidation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

@@ -52,8 +52,14 @@
 							<p:panelGrid columns="1"
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
 
-								<p:commandLink value="Nome: " onclick="PF('listagem').show();">
-									<p:message for="itNome" escape="false" />
+								<p:commandLink value="Nome: " 
+									actionListener="#{funcionarioController.abrirFuncionarioListing}" 
+									process="@this" update="@none">
+									
+									<p:ajax event="dialogReturn" 
+										listener="#{funcionarioController.obterFuncionarioListing}" 
+										update="@form" />
+									
 								</p:commandLink>
 								<p:inputText id="itNome"
 									value="#{funcionarioController.entity.nome}" required="true"
