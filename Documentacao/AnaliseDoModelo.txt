@@ -1,0 +1,12 @@
+Olá Zhydani e Beatriz. Fiz algumas alterações no modelo. Seguem os comentários:
+
+1)Usuario: 
+	- Tirei a Herança. Pensa que um RH pode ser em algum momento da vida um Funcionário de um Cliente ou vice-versa.
+
+2)Funcionario:
+	- Defini 2 Enuns (EstadoCivil e Genero);
+	- Adicionei a Funcao como Classe (vcs podem ja deixar alguns tipos cadastrados e permitir que adicionem outra função ao cadastrar um funcionário.). Outra opção é colocar uma função como "Outra", dai no cadastro do funcionário ele informa em um outro campo quando a função nao existir.
+	- dataFerias (nao entendi o sentido desse campo .. todo ano o funcionario tira férias e as vezes em datas diferentes ). Se vcs forem registrar as férias do funcionário .. seria interessante um outra classe de férias e com data de inicio e fim. O relacionamento seria 1 para *. Seria uma composição.
+
+GuiasRecolhimento:
+	-Não entendi muito bem o pq da herança, sendo que nenhuma especialização possui atributos. Acho que seria melhor modelado como um tipo(Enum) da classe GuiasRecolhimento. O que acham?!
