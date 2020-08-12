@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Professores_Cidade" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="edd4062a-e3fa-4fbc-87a0-027aad623187">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapterPostgresql.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="270"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="720"/>
+	<parameter name="ID_CIDADE" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT a.nome,
+	a.matricula,
+	a.email,
+	c.id AS idcidade,
+	c.nome AS nomecidade
+FROM aluno a,
+	cidade c
+WHERE 
+	 a.idcidade = c.id  
+	 AND 1 = CASE 
+	 							WHEN  $P{ID_CIDADE} IS NULL THEN 1
+	 							WHEN  $P{ID_CIDADE} = c.id THEN 1
+	 							ELSE 0
+	 					END	 		
+ORDER BY c.nome DESC,
+	a.nome DESC]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="matricula" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="matricula"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nomecidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nomecidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<field name="idcidade" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idcidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{idcidade}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="32" forecolor="#006699" uuid="8f3d2a7e-b517-4e1a-80da-93a7cfc9b0cf"/>
+					<textElement textAlignment="Center">
+						<font size="22" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomecidade}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="13ddbea0-1101-4715-8602-76dfa2c2e173"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="79a1c1ad-e67d-4379-ba6a-0d1e9c650ea6"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Alunos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="36" forecolor="#FFFFFF" uuid="44a096d4-3b34-4d96-8033-d85db30c4a29"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relação de alunos por cidade]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="1927e1b2-344c-486d-9e1d-a128bcc266f9"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f230131f-7c02-4cac-b36a-1a0116fc9d41">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d0151cb-ad04-4e6c-bbab-053821fb0569"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="390dcf65-f170-489f-ad16-87f71641d9c4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2f18f17-63fe-4d4f-8d8b-74a8ef314e77"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matrícula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ddf71fa5-ceff-412a-afa5-12ca2fd3fcb7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9908fd39-146b-43e7-8f28-4b0d1e1e547a"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30">
+			<property name="com.jaspersoft.studio.layout"/>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="5" width="185" height="20" uuid="44da43dd-9d04-4ad8-9995-7b4d6752efb7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d0151cb-ad04-4e6c-bbab-053821fb0569"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="185" y="5" width="185" height="20" uuid="fc954432-d322-4978-82ab-12dc59cee60e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2f18f17-63fe-4d4f-8d8b-74a8ef314e77"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricula}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="370" y="5" width="185" height="20" uuid="f738cb69-2514-4d23-8a48-e71a50260d99">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9908fd39-146b-43e7-8f28-4b0d1e1e547a"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="e0f93ef4-a67c-4e95-9593-cc194e5896be"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="7c6aa3c1-370b-45cf-8b5e-bb3799bc7db5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy hh:mm:ss a">
+				<reportElement x="0" y="4" width="140" height="13" uuid="2c30860f-9dc5-4c22-b526-448a86c268ff"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
