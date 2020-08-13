@@ -4,18 +4,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<div class="layout-topbar">
+	<div class="layout-topbar bg-navbar">
 		<div class="layout-topbar-content">
 			<a href="#" id="menu-btn" class="menu-btn"> <i class="pi pi-bars"></i>
 			</a>
-			<p:graphicImage name="layout/images/logo_unitins.png"
-				styleClass="topbar-logo" />
+			
 
 			<p:commandLink
 				value="Olá #{templateController.usuarioLogado.nome} (Sair)"
 				rendered="#{templateController.usuarioLogado != null}"
 				styleClass="topbar-link" process="@this"
 				actionListener="#{templateController.encerrarSessao}" />
+
+			<p:commandLink oncomplete="PF('sidebar1').show()"
+				styleClass="mx-3 pt-1 button-menu">
+				<span><i class="pi pi-bars"
+					style="font-size: 2.5em; color: #fff;"></i></span>
+			</p:commandLink>
 
 		</div>
 	</div>

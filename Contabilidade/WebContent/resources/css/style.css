@@ -1,0 +1,33 @@
+
+fieldset {
+	border: 2px solid black;
+	border-radius: 10px;
+	margin-left: 70px;
+	margin-right: 70px;
+	margin: 30px;
+}
+
+.ui-fieldset .ui-state-default {
+	background: #fff;
+	color: black;
+}
+
+.ui-fieldset legend {
+	font-size: 12px;
+	height: 40px;
+	width: 155px;
+	align-self: center;
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.ui-datalist {
+	margin-bottom: 10px
+}
+
+.ui-noborder tr.ui-widget-content {
+	background: none;
+}
