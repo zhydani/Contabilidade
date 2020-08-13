@@ -12,7 +12,7 @@ public class JPAFactory {
 	}
 	
 	private static EntityManagerFactory emf = 
-			Persistence.createEntityManagerFactory("Academico");
+			Persistence.createEntityManagerFactory("Contabilidade");
 	
 	public static EntityManager getEntityManager() {
 		return emf.createEntityManager();

@@ -5,42 +5,42 @@ import javax.inject.Named;
 
 import application.Session;
 import application.Util;
-//import model.Professor;
-//import repository.ProfessorRepository;
+import model.Contador;
+import repository.ContadorRepository;
 
 @Named
 @RequestScoped
 public class LoginController {
 
-//	private Professor professor;
-//	
-//	public String logar() {
-//		ProfessorRepository repo = new ProfessorRepository();
-//		Professor professor = repo.verificarLoginSenha(getProfessor().getEmail(),
-//				getProfessor().getSenha());
-//		
-//		if (professor != null) {
-//			// adicionando um ussuario na sessao
-//			Session.getInstance().setAttribute("usuarioLogado", professor);
-//			// redirecionando para o template
-//			return "pages/professor.xhtml?faces-redirect=true";
-//		}
-//		Util.addMessageError("Login ou Senha inválido.");
-//		return "";
-//	}
-//	
-//	public void limpar() {
-//		professor = null;
-//	}
-//
-//	public Professor getProfessor() {
-//		if (professor == null)
-//			professor = new Professor();
-//		return professor;
-//	}
-//
-//	public void setProfessor(Professor professor) {
-//		this.professor = professor;
-//	}
+	private Contador contador;
+	
+	public String logar() {
+		ContadorRepository repo = new ContadorRepository();
+		Contador contador = repo.verificarLoginSenha(getContador().getEmail(),
+				getContador().getSenha());
+		
+		if (contador != null) {
+			// adicionando um ussuario na sessao
+			Session.getInstance().setAttribute("usuarioLogado", contador);
+			// redirecionando para o template
+			return "pages/contador.xhtml?faces-redirect=true";
+		}
+		Util.addMessageError("Login ou Senha inválido.");
+		return "";
+	}
+	
+	public void limpar() {
+		contador = null;
+	}
+
+	public Contador getContador() {
+		if (contador == null)
+			contador = new Contador();
+		return contador;
+	}
+
+	public void setContador(Contador contador) {
+		this.contador = contador;
+	}
 
 }

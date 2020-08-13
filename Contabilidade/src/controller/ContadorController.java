@@ -82,7 +82,7 @@ public class ContadorController extends Controller<Contador> {
 				Util.addMessageInfo("Cadastro realizado com sucesso");
 				return;
 			}
-			// salvar a foto do professor
+			// salvar a foto do contador
 			if (Util.saveImageContador(fotoInputStream, "png", getEntity().getId())) {
 				limpar();
 				Util.addMessageInfo("Cadastro realizado com sucesso");
@@ -93,7 +93,7 @@ public class ContadorController extends Controller<Contador> {
 				return;
 			}
 		}
-		Util.addMessageError("Erro ao efetuar o cadastro do professor.");
+		Util.addMessageError("Erro ao efetuar o cadastro do contador.");
 	}
 	
 	public void pesquisar() {
@@ -173,7 +173,7 @@ public class ContadorController extends Controller<Contador> {
 	
 	
 	public void abrirRelatorioContadores() {
-		Util.redirect("/faces/professoresReport");
+		Util.redirect("/faces/contadoresReport");
 	}
 	
 	
