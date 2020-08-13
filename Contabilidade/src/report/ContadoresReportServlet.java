@@ -8,14 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import factory.JDBCFactory;
 
 
-@WebServlet("/professoresReport")
-public class ProfessoresReportServlet extends ReportServlet {
+@WebServlet("/contadoresReport")
+public class ContadoresReportServlet extends ReportServlet {
 
 	private static final long serialVersionUID = 1498447842163614442L;
 
 	@Override
 	public String getArquivoJasper() {
-		return "Professores.jasper";
+		return "Contadores.jasper";
 	}
 
 	@Override

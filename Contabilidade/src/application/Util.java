@@ -15,8 +15,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class Util {
 	// /images
 	public static final String PATH_IMAGES = File.separator + "images";
-	// /images/professor
-	public static final String PATH_IMAGES_PROFESSOR = PATH_IMAGES + File.separator + "professor";
+	// /images/contador
+	public static final String PATH_IMAGES_CONTADOR = PATH_IMAGES + File.separator + "contador";
 	
 	public static void main(String[] args) {
 		System.out.println(DigestUtils.sha256Hex("asldkjfa;lskdjf;laksjdflaksjdflkjas;dlkfja;lskdjf;alksjdf;lkasjdf;lkasjd;flkjasd;lkfjas;dlkjfa;sldkjf;laksdjf;lkasjd;flkjasd;lkjf;lasdkjf;laksjdf;lkjasd;lkfjas;dlkj"));
@@ -39,9 +39,9 @@ public class Util {
 				new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
 	}
 	
-	public static boolean saveImageProfessor(InputStream inputStream, String imageType, int idProfessor) {
-		// Exemplo da maquina do janio: /home/janio/images/professor
-		String diretorio = System.getProperty("user.home") + PATH_IMAGES_PROFESSOR;
+	public static boolean saveImageContador(InputStream inputStream, String imageType, int idContador) {
+		// Exemplo da maquina do janio: /home/janio/images/contador
+		String diretorio = System.getProperty("user.home") + PATH_IMAGES_CONTADOR;
 		
 		// Criando os diretorios caso nao exista
 		File file = new File(diretorio);
@@ -54,8 +54,8 @@ public class Util {
 			// inputStream - eh o fluxo de dados de entrada 
 			BufferedImage bImage = ImageIO.read(inputStream);
 			
-			// estrutura final do arquivo ex: /home/janio/images/professor/01.png
-			File arquivoFinal = new File(diretorio + File.separator + idProfessor + "." + imageType);
+			// estrutura final do arquivo ex: /home/janio/images/contador/01.png
+			File arquivoFinal = new File(diretorio + File.separator + idContador + "." + imageType);
 			// salvando a imagem
 			// buffer da imagem, png/gif, 01.png
 			ImageIO.write(bImage, imageType, arquivoFinal);

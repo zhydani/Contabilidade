@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import application.Util;
  
 //servlet responsavel por retornar uma imagem atravé do nome da imagem (ex. 01.png)
-@WebServlet("/img-professor")
-public class ImgProfessorServlet extends HttpServlet {
+@WebServlet("/img-contador")
+public class ImgContadorServlet extends HttpServlet {
 	/**
 	 * 
 	 */
@@ -22,7 +22,7 @@ public class ImgProfessorServlet extends HttpServlet {
 
 	/**
      * 
-     * @param request - recebe o parâmetro nome (nome da imagem do professor)
+     * @param request - recebe o parâmetro nome (nome da imagem do contador)
      * @param response - retorna a imagem
      * @throws ServletException
      * @throws IOException
@@ -32,11 +32,11 @@ public class ImgProfessorServlet extends HttpServlet {
         // recebendo o nome da imagem 
         String nome = request.getParameter("nome");
         
-        // /home/janio/images/professor/
-        String diretorio = System.getProperty("user.home") + File.separator + Util.PATH_IMAGES_PROFESSOR + File.separator;
+        // /home/janio/images/contador/
+        String diretorio = System.getProperty("user.home") + File.separator + Util.PATH_IMAGES_CONTADOR + File.separator;
         
         // montando a imagem com e endereco do servidor
-        // /home/janio/images/professor/2.png
+        // /home/janio/images/contador/2.png
         File image = new File(diretorio + nome);
         
         // se o nome da imagem for nulo ou se a imagem nao existir, enviar uma imagem padrao
