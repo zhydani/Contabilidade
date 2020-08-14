@@ -1,93 +1,51 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
-                xmlns:h="http://java.sun.com/jsf/html" 
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets" 
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:ph="http://primefaces.org/harmony">
-    <!-- 
-    <div class="layout-sidebar">
-        <ul id="layout-menu" class="layout-menu">
-            <li>
-                <h:link outcome="/pages/aluno">
-                    <i class="pi pi-globe" />
-                    <span>Cadastro de Aluno</span>
-                </h:link>
-            </li>
-            <li>
-                <h:link outcome="/pages/relatorioaluno">
-                    <i class="pi pi-globe" />
-                    <span>Relatório de Alunos</span>
-                </h:link>
-            </li>
-            <li>
-                <h:link outcome="/pages/estado">
-                    <i class="pi pi-globe" />
-                    <span>Cadastro de Estado</span>
-                </h:link>
-            </li>
-            <li>
-                <h:link outcome="/pages/cidade">
-                    <i class="pi pi-globe" />
-                    <span>Cadastro de Cidade</span>
-                </h:link>
-            </li>
-            <li>
-                <h:link outcome="/pages/professor">
-                    <i class="pi pi-globe" />
-                    <span>Cadastro de Professor</span>
-                </h:link>
-            </li>
-            <li>
-                <h:link outcome="/pages/aluno_antigo">
-                    <i class="pi pi-check" />
-                    <span>Cadastro de Aluno (Antigo)</span>
-                </h:link>
-            </li>
-            <li>
-                <h:link outcome="/hello">
-                    <i class="pi pi-list" />
-                    <span>Hello World</span>
-                </h:link>
-            </li>
-      
-        </ul>
-    </div> -->
-    
-    <p:sidebar widgetVar="sidebar1" baseZIndex="10000" id="sidebar"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ph="http://primefaces.org/harmony">
+	
+	<p:sidebar widgetVar="sidebar1" baseZIndex="10000" id="sidebar"
 		class="bg-dark mt-0 text-white wrapper">
 
 
 		<div class="bg-dark mt-0 text-white wrapper" id="sidebar">
 
 			<nav id="sidebar">
-			<div class="sidebar-header ">
-				<p:graphicImage name="layout/images/logo_unitins.png"
-				styleClass="topbar-logo" />
-			</div>
+				<div class="sidebar-header ">
+					<p:graphicImage name="layout/images/logo_unitins.png"
+						styleClass="topbar-logo" />
+				</div>
 
-			<ul class="list-unstyled components">
-				<h:form>
-					<h:panelGrid columns="2">
-						<h:graphicImage class="ml-2 pb-3 mr-2" width="30px"
-							library="images" name="usu.png" />
+				<ul class="list-unstyled components ">
+					<h:form>
+						<h:panelGrid columns="2">
+							<h:graphicImage class="ml-2 pb-3 mr-2" width="30px"
+								library="images" name="usu.png" />
 
-						<h:outputLabel value=" #{templateController.usuarioLogado.nome}"
-							class="font-weight-bold mb-3" />
+							<h:outputLabel value=" #{templateController.usuarioLogado.nome}"
+								class="font-weight-bold mb-3" />
 
 
-					</h:panelGrid>
-					<li><a href="index.xhtml">Início</a></li>
-					<li class="active"><a href="buscarusuario.xhtml"
-						data-toggle="collapse" aria-expanded="false">Gerenciar
-							Usuários</a></li>
-					<li><a href="consultadepartamento.xhtml">Gerenciar
-							Departamentos</a></li>
-					<li><a href="buscarpaciente.xhtml">Gerenciar Pacientes</a></li>
-					<li><a href="transferencia.xhtml">Transferir Paciente</a></li>
-					<li><h:commandLink value="Sair"
-							action="#{templateController.encerrarSessao}" class="nav-link" /></li>
-				</h:form>
-			</ul>
+						</h:panelGrid>
+						<li><a href="index.xhtml">Início</a></li>
+						
+						<li><h:link outcome="/pages/contador">
+								
+								<span>Cadastro de Contador</span>
+							</h:link></li>
+						<li><h:link outcome="/pages/estado">
+								 
+								<span>Cadastro de Estado</span>
+							</h:link></li>
+						<li><h:link outcome="/pages/cidade">
+								
+								<span>Cadastro de Cidade</span>
+							</h:link></li>
+						<li><h:commandLink value="Sair"
+								action="#{templateController.encerrarSessao}" class="nav-link" /></li>
+					</h:form>
+				</ul>
 
 
 			</nav>
