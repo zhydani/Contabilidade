@@ -6,14 +6,11 @@
 	<persistence-unit name="Contabilidade">
 		<class>converter.jpa.ConverterTipoUsuario</class>
 		<class>model.Contador</class>
-		<class>model.Cidade</class>
 		<class>model.DefaultEntity</class>
-		<class>model.Estado</class>
 		<class>model.Telefone</class>
 		<class>model.FornecedorCredor</class>
 		<class>model.Organizacao</class>
-		<class>test.Cidade2</class>
-		<class>test.Estado2</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver" /> <!-- DB Driver -->

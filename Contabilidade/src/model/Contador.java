@@ -4,9 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -37,10 +34,6 @@ public class Contador extends DefaultEntity<Contador> {
 	
 	private TipoUsuario tipoUsuario;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idcidade")
-	private Cidade cidade;
-
 	public String getNome() {
 		return nome;
 	}
@@ -64,14 +57,6 @@ public class Contador extends DefaultEntity<Contador> {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
 	}
 
 	@Override

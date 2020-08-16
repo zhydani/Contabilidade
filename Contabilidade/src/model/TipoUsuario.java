@@ -6,7 +6,7 @@ import java.util.List;
 public enum TipoUsuario {
 	
 	ADMINISTRADOR(1, "Adminstrador"), 
-	FUNCIONARIO(2, "Professor");
+	FUNCIONARIO(2, "Contador");
 	
 	private int id;
 	private String label;
@@ -17,17 +17,17 @@ public enum TipoUsuario {
 		this.label = label;
 		paginasAcesso = new ArrayList<String>();
 		if (id == 1) {
-			paginasAcesso.add("pages/aluno.xhtml");
-			paginasAcesso.add("pages/alunolisting.xhtml");
-			paginasAcesso.add("pages/professor.xhtml");
-			paginasAcesso.add("pages/professorlisting.xhtml");
-			paginasAcesso.add("pages/professorlistingsql.xhtml");
+//			paginasAcesso.add("pages/aluno.xhtml");
+//			paginasAcesso.add("pages/alunolisting.xhtml");
+			paginasAcesso.add("pages/contador.xhtml");
+			paginasAcesso.add("pages/contadorlisting.xhtml");
+			paginasAcesso.add("pages/contadorlistingsql.xhtml");
 			paginasAcesso.add("pages/estado.xhtml");
 			paginasAcesso.add("pages/estadolisting.xhtml");
 			paginasAcesso.add("pages/cidade.xhtml");
 			paginasAcesso.add("pages/cidadelisting.xhtml");
-			paginasAcesso.add("pages/relatorioaluno.xhtml");
-			paginasAcesso.add("img-professor");
+//			paginasAcesso.add("pages/relatorioaluno.xhtml");
+			paginasAcesso.add("img-contador");
 		} else {
 			paginasAcesso.add("pages/aluno.xhtml");
 			paginasAcesso.add("pages/estado.xhtml");
