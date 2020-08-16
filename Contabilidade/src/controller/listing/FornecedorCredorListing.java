@@ -26,6 +26,7 @@ public class FornecedorCredorListing extends Listing<FornecedorCredor> {
 	}
 	
 	public void open() {
+		
 		Map<String,Object> options = new HashMap<String, Object>();
         options.put("resizable", true);
         options.put("draggable", true);
@@ -35,7 +36,8 @@ public class FornecedorCredorListing extends Listing<FornecedorCredor> {
         options.put("contentWidth", "100%");
         options.put("contentHeight", "100%");  
         // ligacao com a pagina xhtml
-        PrimeFaces.current().dialog().openDynamic("fornecedorcredorlisting", options, null);
+       
+        PrimeFaces.current().dialog().openDynamic("pages/fornecedorcredorlisting", options, null);
 	}
 
 	public void pesquisar() {
