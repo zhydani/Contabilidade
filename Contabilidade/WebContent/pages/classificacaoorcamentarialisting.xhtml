@@ -29,10 +29,10 @@
 								<div class="card card-w-title">
 		                            <div class="ui-inputgroup">
 		                                <p:inputText id="itFiltro" 
-		                                	value="#{fornecedorCredorListing.filtro}"
-		                                	placeholder="Informe o nome do Fornecedor ou Credor ..." />        
+		                                	value="#{classificacaoOrcamentariaListing.filtro}"
+		                                	placeholder="Informe o número da Classificação Orçamentária ..." />        
 		                                <p:commandButton value="Pesquisar"
-											actionListener="#{fornecedorCredorListing.pesquisar}"
+											actionListener="#{classificacaoOrcamentariaListing.pesquisar}"
 											process="@this itFiltro" update="dtListagem" /> 
 		                            </div>
 			                    </div>
@@ -50,25 +50,51 @@
 								var="entity" rowIndexVar="row"
 								paginator="false"
 								reflow="true"
-								value="#{fornecedorCredorListing.list}">
+								value="#{classificacaoOrcamentariaListing.list}">
 								<p:column headerText="N." style="width: 30px; text-align: center;">
 									<h:outputText value="#{row + 1}" />
 								</p:column>
 			
-								<p:column headerText="Nome">
-									<p:commandLink value="#{entity.nome}"
-										actionListener="#{fornecedorCredorListing.select(entity.id)}" 
+								<p:column headerText="Número">
+									<p:commandLink value="#{entity.numero}"
+										actionListener="#{classificacaoOrcamentariaListing.select(entity.id)}" 
+										process="@this" update="@form" resetValues="true"/>
+								</p:column>
+								
+								<p:column headerText="Função">
+									<p:commandLink value="#{entity.funcao}"
+										actionListener="#{classificacaoOrcamentariaListing.select(entity.id)}" 
+										process="@this" update="@form" resetValues="true"/>
+								</p:column>
+								
+								<p:column headerText="SubFunção">
+									<p:commandLink value="#{entity.subfuncao}"
+										actionListener="#{classificacaoOrcamentariaListing.select(entity.id)}" 
+										process="@this" update="@form" resetValues="true"/>
+								</p:column>
+								
+								<p:column headerText="Unidade">
+									<p:commandLink value="#{entity.unidade}"
+										actionListener="#{classificacaoOrcamentariaListing.select(entity.id)}" 
+										process="@this" update="@form" resetValues="true"/>
+								</p:column>
+								
+								<p:column headerText="Natureza">
+									<p:commandLink value="#{entity.natureza}"
+										actionListener="#{classificacaoOrcamentariaListing.select(entity.id)}" 
+										process="@this" update="@form" resetValues="true"/>
+								</p:column>
+								
+								<p:column headerText="Fonte">
+									<p:commandLink value="#{entity.fonte}"
+										actionListener="#{classificacaoOrcamentariaListing.select(entity.id)}" 
 										process="@this" update="@form" resetValues="true"/>
 								</p:column>
 			
-								<p:column headerText="CPF ou CNPJ" style="width: 150px; text-align: center;">
-									<p:commandLink value="#{entity.cpfCnpj}"
-										actionListener="#{fornecedorCredorListing.select(entity.id)}" 
-										process="@this" update="@form" resetValues="true"/>
-								</p:column>
+								
 			
 								<f:facet name="footer">
-							        Total de #{fornecedorCredorListing.list.size()} Fornecedores ou Credores.
+							        Total de #{classificacaoOrcamentariaListing.list.size()} Classificações Orçamentárias.
 							    </f:facet>
 							</p:dataTable>
 						</div>

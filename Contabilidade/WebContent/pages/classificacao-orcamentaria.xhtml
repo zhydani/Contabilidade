@@ -6,26 +6,26 @@
 
 	<ui:define name="head">
 		<style type="text/css">
-			.ui-panelgrid.form-elements .ui-grc-2 {
-				padding-left: 60px;
-			}
-			
-			@media ( max-width :1024px) {
-				.ui-panelgrid.form-elements .ui-grc-2 {
-					padding-left: 20px;
-				}
-			}
-			
-			@media ( max-width :640px) {
-				.ui-panelgrid.form-elements .ui-grc-2 {
-					padding-left: 6px;
-				}
-			}
-			
-			.dialogDemo label {
-				line-height: 2.1em;
-			}
-			</style>
+.ui-panelgrid.form-elements .ui-grc-2 {
+	padding-left: 60px;
+}
+
+@media ( max-width :1024px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 20px;
+	}
+}
+
+@media ( max-width :640px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 6px;
+	}
+}
+
+.dialogDemo label {
+	line-height: 2.1em;
+}
+</style>
 	</ui:define>
 
 	<ui:define name="content">
@@ -38,74 +38,121 @@
 			<p:graphicImage name="/images/loading.gif" />
 		</p:dialog>
 
-		<h:form>
-			<p:growl id="growl" globalOnly="false" />
-			<p:panel id="panel">
-				<f:facet name="header">
-					<div align="center">
-						<h1>Cadastro de Estado</h1>
-					</div>
-				</f:facet>
-				<div class="ui-g ui-fluid">
-					<div class="ui-g-12">
-						<div class="card card-w-title">
-							<p:panelGrid columns="1"
-								styleClass="form-group ui-panelgrid-blank" layout="grid">
-								<p:commandLink value="Nome: " 
-									actionListener="#{estadoController.abrirEstadoListing}" 
-									process="@this" update="@none">
-									
-									<p:ajax event="dialogReturn" 
-										listener="#{estadoController.obterEstadoListing}" 
-										update="@form" />
-									
-									<p:message for="itNome" escape="false" />
-								</p:commandLink>
-								<p:inputText id="itNome" value="#{estadoController.entity.nome}"
-									required="true" requiredMessage="Informe o nome." />
+		<h:form id="form">
+			<table width="100%">
 
-								<p:outputLabel value="Sigla: ">
-									<p:message for="itSigla" escape="false" />
-								</p:outputLabel>
-								<p:inputText id="itSigla"
-									value="#{estadoController.entity.sigla}" />
-							</p:panelGrid>
+
+
+
+				<tr>
+					<td>
+
+						<div class="container">
+							<div class="border-left mb-4 ">
+								<h4 class="ml-3 py-2 font-weight-bold">Cadastro de
+									Classificação Orçamentária</h4>
+							</div>
+
+							<p:growl id="growl" globalOnly="false" />
+							<p:panel id="panel">
+								<f:facet name="header">
+									<div align="center">
+										<h6 class="font-weight-bold">Formulário</h6>
+									</div>
+								</f:facet>
+								<div class=" ui-g ui-fluid">
+									<div class="ui-g-12">
+										<div class=" card-w-title">
+											<p:panelGrid columns="1"
+												styleClass="form-group ui-panelgrid-blank" layout="grid">
+												<p:commandLink value="Numero: "
+													actionListener="#{classificacaoOrcamentariaController.abrirClassificacaoOrcamentariaListing}"
+													process="@this" update="@none">
+
+													<p:ajax event="dialogReturn"
+														listener="#{classificacaoOrcamentariaController.obterClassificacaoOrcamentariaListing}"
+														update="@form" />
+
+													<p:message for="itNumero" escape="false" />
+												</p:commandLink>
+												<p:inputText id="itNumero"
+													value="#{classificacaoOrcamentariaController.entity.numero}"
+													required="true" requiredMessage="Informe o numero." />
+
+												<p:outputLabel value="Função: ">
+													<p:message for="itFuncao" escape="false" />
+												</p:outputLabel>
+												<p:inputText id="itFuncao"
+													value="#{classificacaoOrcamentariaController.entity.funcao}" />
+
+												<p:outputLabel value="Sub Função: ">
+													<p:message for="itSubfuncao" escape="false" />
+												</p:outputLabel>
+												<p:inputText id="itSubfuncao"
+													value="#{classificacaoOrcamentariaController.entity.subfuncao}" />
+
+												<p:outputLabel value="Unidade: ">
+													<p:message for="itUnidade" escape="false" />
+												</p:outputLabel>
+												<p:inputText id="itUnidade"
+													value="#{classificacaoOrcamentariaController.entity.unidade}" />
+
+												<p:outputLabel value="Função: ">
+													<p:message for="itNatureza" escape="false" />
+												</p:outputLabel>
+												<p:inputText id="itNatureza"
+													value="#{classificacaoOrcamentariaController.entity.natureza}" />
+
+												<p:outputLabel value="Fonte:  ">
+													<p:message for="itFonte" escape="false" />
+												</p:outputLabel>
+												<p:inputText id="itFonte"
+													value="#{classificacaoOrcamentariaController.entity.fonte}" />
+											</p:panelGrid>
+										</div>
+									</div>
+								</div>
+								<p:toolbar>
+									<f:facet name="left">
+										<p:commandButton value="Salvar" icon="pi pi-check"
+											process="@form" update="@form"
+											action="#{classificacaoOrcamentariaController.salvar}" />
+
+										<p:commandButton value="Limpar" process="@this" update="panel"
+											action="#{classificacaoOrcamentariaController.limpar}">
+											<p:ajax update="@form" resetValues="true" />
+										</p:commandButton>
+
+									</f:facet>
+
+									<f:facet name="right">
+										<p:commandButton value="Excluir" icon="pi pi-trash"
+											process="@form" update="panel"
+											action="#{classificacaoOrcamentariaController.excluir}">
+											<p:confirm header="Confirmação"
+												message="Confirma a exclusão?" />
+										</p:commandButton>
+									</f:facet>
+								</p:toolbar>
+							</p:panel>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" />
+							</p:confirmDialog>
+
+
 						</div>
-					</div>
-				</div>
-				<p:toolbar>
-					<f:facet name="left">
-						<p:commandButton value="Salvar" icon="pi pi-check" process="@form"
-							update="@form" action="#{estadoController.salvar}" />
 
-						<p:commandButton value="Limpar" 
-							process="@this" update="panel"
-							action="#{estadoController.limpar}">
-							<p:ajax update="@form" resetValues="true" />
-						</p:commandButton>
 
-					</f:facet>
 
-					<f:facet name="right">
-						<p:commandButton value="Excluir" icon="pi pi-trash"
-							process="@form" update="panel"
-							action="#{estadoController.excluir}">
-							<p:confirm header="Confirmação" message="Confirma a exclusão?" />
-						</p:commandButton>
-					</f:facet>
-				</p:toolbar>
-			</p:panel>
 
-			<p:confirmDialog global="true" 
-				showEffect="fade" 
-				hideEffect="fade">
-				<p:commandButton value="Sim" type="button"
-					styleClass="ui-confirmdialog-yes" />
-				<p:commandButton value="Não" type="button"
-					styleClass="ui-confirmdialog-no" />
-			</p:confirmDialog>
-
+					</td>
+				</tr>
+			</table>
 		</h:form>
 	</ui:define>
 </ui:composition>
-		
