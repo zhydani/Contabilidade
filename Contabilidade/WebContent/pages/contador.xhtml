@@ -6,26 +6,26 @@
 
 	<ui:define name="head">
 		<style type="text/css">
-			.ui-panelgrid.form-elements .ui-grc-2 {
-				padding-left: 60px;
-			}
-			
-			@media ( max-width :1024px) {
-				.ui-panelgrid.form-elements .ui-grc-2 {
-					padding-left: 20px;
-				}
-			}
-			
-			@media ( max-width :640px) {
-				.ui-panelgrid.form-elements .ui-grc-2 {
-					padding-left: 6px;
-				}
-			}
-			
-			.dialogDemo label {
-				line-height: 2.1em;
-			}
-			</style>
+.ui-panelgrid.form-elements .ui-grc-2 {
+	padding-left: 60px;
+}
+
+@media ( max-width :1024px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 20px;
+	}
+}
+
+@media ( max-width :640px) {
+	.ui-panelgrid.form-elements .ui-grc-2 {
+		padding-left: 6px;
+	}
+}
+
+.dialogDemo label {
+	line-height: 2.1em;
+}
+</style>
 	</ui:define>
 
 	<ui:define name="content">
@@ -39,155 +39,140 @@
 		</p:dialog>
 
 		<h:form>
-			<p:growl id="growl" globalOnly="false" showDetail="false" showSummary="false"  skipDetailIfEqualsSummary="true"/>
-			<p:panel id="panel">
-				<f:facet name="header">
-					<div>
-						<div align="center" style="width: 85%; display: inline-block;">
-							<h1>Cadastro de Contador</h1>
-						</div>
-						<div align="right" style="float: right; position: relative;">
-							<img class="img-responsive"
-						     style="max-width: 80px!important;max-height: 80px!important;"            
-						     src="/Contabilidade/faces/img-contador?nome=#{contadorController.entity.id}.png"/>
-						</div>
-					</div>
-				</f:facet>
-				<div class="ui-g ui-fluid">
-					<div class="ui-g-12">
-						<div class="card card-w-title">
-							<p:panelGrid columns="1"
-								styleClass="form-group ui-panelgrid-blank" layout="grid">
-								<p:commandLink value="Nome: " 
-									actionListener="#{contadorController.abrirContadorListing}" 
-									process="@this" update="@none">
-									
-									<p:ajax event="dialogReturn" 
-										listener="#{contadorController.obterContadorListing}" 
-										update="@form" />
-									
-								</p:commandLink>
-								<p:inputText id="itNome" value="#{contadorController.entity.nome}"
-									required="true" requiredMessage="Informe o nome." />
-
-								<p:outputLabel value="CRC: ">
-									<p:message for="itCrc" escape="false" />
-								</p:outputLabel>
-								<p:inputText id="itCrc"
-									value="#{contadorController.entity.crc}" />
-
-								<p:outputLabel value="Data de Aniversário:" />
-								<p:calendar value="#{contadorController.entity.dataAniversario}"
-									pattern="dd/MM/yyyy" />
-
-								<p:outputLabel value="E-mail:" />
-								<p:inputText value="#{contadorController.entity.email}" />
-								
-								<p:outputLabel value="Senha:" />
-								<p:inputText value="#{contadorController.entity.senha}" />
-								
-								<p:outputLabel value="Tipo de Usuário:" />
-								<p:selectOneMenu value="#{contadorController.entity.tipoUsuario}" >
-									<f:selectItem itemLabel="Selecione ..." itemValue=""/>
-									<f:selectItems 
-											value="#{contadorController.listaTipoUsuario}"
-											var="tipo" 
-											itemLabel="#{tipo.label}"  
-											itemValue="#{tipo}"/>
-								</p:selectOneMenu>
-								
-								
-									
-								<h:form enctype="multipart/form-data"> 
-									<p:fileUpload listener="#{contadorController.upload}" 
-												  label="#{contadorController.nomeFoto}"
-												  mode="advanced"
-								                  update="@this messages" 
-								                  auto="false" sizeLimit="200000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-								         
-								    <p:growl id="messages" showDetail="true" /> 
-								</h:form>
-								
-							</p:panelGrid>
-
-							
-						</div>
-					</div>
+			<div class="container">
+				<div class="border-left mb-4 ">
+					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Contador</h4>
 				</div>
-				<p:toolbar>
-					<f:facet name="left">
-						<p:commandButton value="Salvar" icon="pi pi-check" process="@form"
-							update="@form" action="#{contadorController.salvar}" />
+				<p:growl id="growl" globalOnly="false" showDetail="false"
+					showSummary="false" skipDetailIfEqualsSummary="true" />
+				<p:panel id="panel">
 
-						<p:commandButton value="Limpar" 
-							process="@this" update="panel"
-							action="#{contadorController.limpar}">
-							<p:ajax update="@form" resetValues="true" />
-						</p:commandButton>
+					<div class="ui-g ui-fluid">
+						<div class="ui-g-12">
+							<div class="card card-w-title">
+								<p:panelGrid columns="1"
+									styleClass="form-group ui-panelgrid-blank" layout="grid">
+									<p:commandLink value="Nome: "
+										actionListener="#{contadorController.abrirContadorListing}"
+										process="@this" update="@none">
 
-					</f:facet>
+										<p:ajax event="dialogReturn"
+											listener="#{contadorController.obterContadorListing}"
+											update="@form" />
 
-					<f:facet name="right">
-						<p:commandButton value="Gerar PDF de todos os Contadores" process="@this"
-							actionListener="#{contadorController.abrirRelatorioContadores()}" 
-							onclick="this.form.target='_blank'">
-						</p:commandButton>
-					
-						<p:commandButton value="Excluir" icon="pi pi-trash"
-							process="@form" update="panel"
-							action="#{contadorController.excluir}">
-							<p:confirm header="Confirmação" message="Confirma a exclusão?" />
-						</p:commandButton>
-					</f:facet>
-				</p:toolbar>
-			</p:panel>
+									</p:commandLink>
+									<p:inputText id="itNome"
+										value="#{contadorController.entity.nome}" required="true"
+										requiredMessage="Informe o nome." />
 
-			<p:confirmDialog global="true" 
-				showEffect="fade" 
-				hideEffect="fade">
-				<p:commandButton value="Sim" type="button"
-					styleClass="ui-confirmdialog-yes" />
-				<p:commandButton value="Não" type="button"
-					styleClass="ui-confirmdialog-no" />
-			</p:confirmDialog>
+									<p:outputLabel value="CRC: ">
+										<p:message for="itCrc" escape="false" />
+									</p:outputLabel>
+									<p:inputText id="itCrc"
+										value="#{contadorController.entity.crc}" />
 
-			<p:dialog header="Listagem de Contadors" 
-				widgetVar="listagem"
-				height="300" width="90%"
-				modal="true" resizable="true">
-				<p:outputLabel value="Nome: " />
-				<p:inputText id="itFiltro" value="#{contadorController.filtro}" />
-				<p:commandButton value="Pesquisar"
-					actionListener="#{contadorController.pesquisar}"
-					process="@this itFiltro" update="dtListagem" />
-				<br />
-				<p:dataTable id="dtListagem" var="entity"
-					value="#{contadorController.listaContador}">
-					<p:column headerText="Id">
-						<h:outputText value="#{entity.id}" />
-					</p:column>
+									<p:outputLabel value="CPF: ">
+										<p:message for="itCpf" escape="false" />
+									</p:outputLabel>
+									<p:inputText id="itCpf"
+										value="#{contadorController.entity.cpf}" />
 
-					<p:column headerText="Nome">
-						<p:commandLink value="#{entity.nome}"
-							actionListener="#{contadorController.editar(entity.id)}" 
-							process="@this" update="@form" resetValues="true"/>
-					</p:column>
+									<p:outputLabel value="Data de Aniversário:" />
+									<p:calendar
+										value="#{contadorController.entity.dataAniversario}"
+										pattern="dd/MM/yyyy" />
 
-					<p:column headerText="CRC">
-						<h:outputText value="#{entity.crc}" />
-					</p:column>
+									<p:outputLabel value="E-mail:" />
+									<p:inputText value="#{contadorController.entity.email}" />
 
-					<p:column headerText="Data Aniversário">
-						<h:outputText value="#{entity.dataAniversario}" />
-					</p:column>
+									<p:outputLabel value="Senha:" />
+									<p:inputText value="#{contadorController.entity.senha}" />
 
-					<p:column headerText="E-Mail">
-						<h:outputText value="#{entity.email}" />
-					</p:column>
-				</p:dataTable>
-			</p:dialog>
-			
+
+
+
+
+								</p:panelGrid>
+
+
+							</div>
+						</div>
+					</div>
+					<p:toolbar>
+						<f:facet name="left">
+							<p:commandButton value="Salvar" icon="pi pi-check"
+								process="@form" update="@form"
+								action="#{contadorController.salvar}" />
+
+							<p:commandButton value="Limpar" process="@this" update="panel"
+								action="#{contadorController.limpar}">
+								<p:ajax update="@form" resetValues="true" />
+							</p:commandButton>
+
+						</f:facet>
+
+						<f:facet name="right">
+							<p:commandButton value="Gerar PDF de todos os Contadores"
+								process="@this"
+								actionListener="#{contadorController.abrirRelatorioContadores()}"
+								onclick="this.form.target='_blank'">
+							</p:commandButton>
+
+							<p:commandButton value="Excluir" icon="pi pi-trash"
+								process="@form" update="panel"
+								action="#{contadorController.excluir}">
+								<p:confirm header="Confirmação" message="Confirma a exclusão?" />
+							</p:commandButton>
+						</f:facet>
+					</p:toolbar>
+				</p:panel>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" />
+				</p:confirmDialog>
+
+				<p:dialog header="Listagem de Contadors" widgetVar="listagem"
+					height="300" width="90%" modal="true" resizable="true">
+					<p:outputLabel value="Nome: " />
+					<p:inputText id="itFiltro" value="#{contadorController.filtro}" />
+					<p:commandButton value="Pesquisar"
+						actionListener="#{contadorController.pesquisar}"
+						process="@this itFiltro" update="dtListagem" />
+					<br />
+					<p:dataTable id="dtListagem" var="entity"
+						value="#{contadorController.listaContador}">
+						<p:column headerText="Id">
+							<h:outputText value="#{entity.id}" />
+						</p:column>
+
+						<p:column headerText="Nome">
+							<p:commandLink value="#{entity.nome}"
+								actionListener="#{contadorController.editar(entity.id)}"
+								process="@this" update="@form" resetValues="true" />
+						</p:column>
+
+						<p:column headerText="CRC">
+							<h:outputText value="#{entity.crc}" />
+						</p:column>
+						
+						<p:column headerText="CPF">
+							<h:outputText value="#{entity.cpf}" />
+						</p:column>
+
+						<p:column headerText="Data Aniversário">
+							<h:outputText value="#{entity.dataAniversario}" />
+						</p:column>
+
+						<p:column headerText="E-Mail">
+							<h:outputText value="#{entity.email}" />
+						</p:column>
+					</p:dataTable>
+				</p:dialog>
+			</div>
 		</h:form>
+
 	</ui:define>
 </ui:composition>
-		

@@ -32,7 +32,7 @@ public class Contador extends DefaultEntity<Contador> {
 	
 	private String senha;
 	
-	private TipoUsuario tipoUsuario;
+//	private TipoUsuario tipoUsuario;
 
 	public String getNome() {
 		return nome;
@@ -72,13 +72,13 @@ public class Contador extends DefaultEntity<Contador> {
 		this.senha = senha;
 	}
 
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
+//	public TipoUsuario getTipoUsuario() {
+//		return tipoUsuario;
+//	}
+//
+//	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+//		this.tipoUsuario = tipoUsuario;
+//	}
 
 	public String getCrc() {
 		return crc;
