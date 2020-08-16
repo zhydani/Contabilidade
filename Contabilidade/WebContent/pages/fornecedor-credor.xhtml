@@ -49,7 +49,7 @@
 
 							<div class="container">
 								<div class="border-left mb-4 ">
-									<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Estado</h4>
+									<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Fornecedor/Credor</h4>
 								</div>
 
 								<p:growl id="growl" globalOnly="false" />
@@ -61,24 +61,24 @@
 												<p:panelGrid columns="1"
 													styleClass="form-group ui-panelgrid-blank" layout="grid">
 													<p:commandLink value="Nome: "
-														actionListener="#{estadoController.abrirEstadoListing}"
+														actionListener="#{fornecedorCredorController.abrirFornecedorCredorListing}"
 														process="@this" update="@none">
 
 														<p:ajax event="dialogReturn"
-															listener="#{estadoController.obterEstadoListing}"
+															listener="#{fornecedorCredorController.obterFornecedorCredorListing}"
 															update="@form" />
 
 														<p:message for="itNome" escape="false" />
 													</p:commandLink>
 													<p:inputText id="itNome"
-														value="#{estadoController.entity.nome}" required="true"
+														value="#{fornecedorCredorController.entity.nome}" required="true"
 														requiredMessage="Informe o nome." />
 
-													<p:outputLabel value="Sigla: ">
-														<p:message for="itSigla" escape="false" />
+													<p:outputLabel value="CPF/CNPJ: ">
+														<p:message for="itCpfCnpj" escape="false" />
 													</p:outputLabel>
-													<p:inputText id="itSigla"
-														value="#{estadoController.entity.sigla}" />
+													<p:inputText id="itCpfCnpj"
+														value="#{fornecedorCredorController.entity.cpfCnpj}" />
 												</p:panelGrid>
 											</div>
 										</div>
@@ -87,10 +87,10 @@
 										<f:facet name="left">
 											<p:commandButton value="Salvar" icon="pi pi-check"
 												process="@form" update="@form"
-												action="#{estadoController.salvar}" />
+												action="#{fornecedorCredorController.salvar}" />
 
 											<p:commandButton value="Limpar" process="@this"
-												update="panel" action="#{estadoController.limpar}">
+												update="panel" action="#{fornecedorCredorController.limpar}">
 												<p:ajax update="@form" resetValues="true" />
 											</p:commandButton>
 
@@ -99,7 +99,7 @@
 										<f:facet name="right">
 											<p:commandButton value="Excluir" icon="pi pi-trash"
 												process="@form" update="panel"
-												action="#{estadoController.excluir}">
+												action="#{fornecedorCredorController.excluir}">
 												<p:confirm header="Confirmação"
 													message="Confirma a exclusão?" />
 											</p:commandButton>

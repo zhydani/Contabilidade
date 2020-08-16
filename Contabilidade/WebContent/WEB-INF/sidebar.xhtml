@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ph="http://primefaces.org/harmony">
-	
+
 	<p:sidebar widgetVar="sidebar1" baseZIndex="10000" id="sidebar"
 		class="bg-dark mt-0 text-white wrapper">
 
@@ -29,18 +29,27 @@
 
 						</h:panelGrid>
 						<li><a href="index.xhtml">Início</a></li>
-						
+
 						<li><h:link outcome="/pages/contador">
-								
 								<span>Cadastro de Contador</span>
 							</h:link></li>
-						<li><h:link outcome="/pages/estado">
-								 
-								<span>Cadastro de Estado</span>
+						<li><h:link outcome="/pages/organizacao">
+								<span>Cadastro de Organização</span>
 							</h:link></li>
-						<li><h:link outcome="/pages/cidade">
-								
-								<span>Cadastro de Cidade</span>
+						<li><h:link outcome="/pages/fornecedor-credor">
+								<span>Cadastro de Fornecedor/Credor</span>
+							</h:link></li>
+						<li><h:link outcome="/pages/classificacao-orcamentaria">
+								<span>Cadastro de Classificacao Orcamentaria</span>
+							</h:link></li>
+						<li><h:link outcome="/pages/empenho">
+								<span>Cadastro de Empenho</span>
+							</h:link></li>
+							<li><h:link outcome="/pages/liquidacao">
+								<span>Cadastro de Liquidação</span>
+							</h:link></li>
+							<li><h:link outcome="/pages/pagamento">
+								<span>Cadastro de Pagamento</span>
 							</h:link></li>
 						<li><h:commandLink value="Sair"
 								action="#{templateController.encerrarSessao}" class="nav-link" /></li>
