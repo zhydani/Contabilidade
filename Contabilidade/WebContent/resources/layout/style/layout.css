@@ -100,8 +100,9 @@ body.layout-scroll-block {
   color: #007ad9;
 }
 .layout-wrapper .layout-content {
-  margin-left: 250px;
+  margin-left: 0px;
   padding: 84px 24px 24px 24px;
+  
 }
 .layout-wrapper .layout-footer {
   width: 100%;

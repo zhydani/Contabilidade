@@ -21,7 +21,10 @@ public class Contador extends DefaultEntity<Contador> {
 	private String nome;
 
 	@Column(length = 20, nullable = false)
-	private String matricula;
+	private String crc;
+	
+	@Column(length = 20, nullable = false)
+	private String cpf;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -46,14 +49,7 @@ public class Contador extends DefaultEntity<Contador> {
 		this.nome = nome;
 	}
 
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
-
+	
 	public Date getDataAniversario() {
 		return dataAniversario;
 	}
@@ -98,5 +94,23 @@ public class Contador extends DefaultEntity<Contador> {
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+
+	public String getCrc() {
+		return crc;
+	}
+
+	public void setCrc(String crc) {
+		this.crc = crc;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	
 	
 }

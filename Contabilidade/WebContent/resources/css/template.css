@@ -171,15 +171,14 @@ a.article, a.article:hover {
 
 
 .footer {
-	grid-area: footer;
 	background: #a5ffd6;
 	height: 72px;
 	text-align: center;
-	vertical-align: middle;
-	bottom: 0;
-	left: 0;
-	right: 0;
 	position: fixed;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	clear: both;
 }
 
 .div-select {

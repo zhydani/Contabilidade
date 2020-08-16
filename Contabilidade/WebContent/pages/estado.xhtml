@@ -45,79 +45,77 @@
 
 
 				<tr>
-					<td valign="top"
-						class="pt-5  content active mar d-flex justify-content-start"><ui:insert
-							name="conteudo">
-							<div class="container d-flex justify-content-start">
-								
-									<p:growl id="growl" globalOnly="false" />
-									<p:panel id="panel">
-										<f:facet name="header">
-											<div align="center">
-												<h1>Cadastro de Estado</h1>
-											</div>
-										</f:facet>
-										<div class="ui-g ui-fluid">
-											<div class="ui-g-12">
-												<div class="card card-w-title">
-													<p:panelGrid columns="1"
-														styleClass="form-group ui-panelgrid-blank" layout="grid">
-														<p:commandLink value="Nome: "
-															actionListener="#{estadoController.abrirEstadoListing}"
-															process="@this" update="@none">
+					<td><ui:insert>
 
-															<p:ajax event="dialogReturn"
-																listener="#{estadoController.obterEstadoListing}"
-																update="@form" />
+							<div class="container">
+								<div class="border-left mb-4 ">
+									<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Estado</h4>
+								</div>
 
-															<p:message for="itNome" escape="false" />
-														</p:commandLink>
-														<p:inputText id="itNome"
-															value="#{estadoController.entity.nome}" required="true"
-															requiredMessage="Informe o nome." />
+								<p:growl id="growl" globalOnly="false" />
+								<p:panel id="panel">
 
-														<p:outputLabel value="Sigla: ">
-															<p:message for="itSigla" escape="false" />
-														</p:outputLabel>
-														<p:inputText id="itSigla"
-															value="#{estadoController.entity.sigla}" />
-													</p:panelGrid>
-												</div>
+									<div class=" ui-g ui-fluid">
+										<div class="ui-g-12">
+											<div class=" card-w-title">
+												<p:panelGrid columns="1"
+													styleClass="form-group ui-panelgrid-blank" layout="grid">
+													<p:commandLink value="Nome: "
+														actionListener="#{estadoController.abrirEstadoListing}"
+														process="@this" update="@none">
+
+														<p:ajax event="dialogReturn"
+															listener="#{estadoController.obterEstadoListing}"
+															update="@form" />
+
+														<p:message for="itNome" escape="false" />
+													</p:commandLink>
+													<p:inputText id="itNome"
+														value="#{estadoController.entity.nome}" required="true"
+														requiredMessage="Informe o nome." />
+
+													<p:outputLabel value="Sigla: ">
+														<p:message for="itSigla" escape="false" />
+													</p:outputLabel>
+													<p:inputText id="itSigla"
+														value="#{estadoController.entity.sigla}" />
+												</p:panelGrid>
 											</div>
 										</div>
-										<p:toolbar>
-											<f:facet name="left">
-												<p:commandButton value="Salvar" icon="pi pi-check"
-													process="@form" update="@form"
-													action="#{estadoController.salvar}" />
+									</div>
+									<p:toolbar>
+										<f:facet name="left">
+											<p:commandButton value="Salvar" icon="pi pi-check"
+												process="@form" update="@form"
+												action="#{estadoController.salvar}" />
 
-												<p:commandButton value="Limpar" process="@this"
-													update="panel" action="#{estadoController.limpar}">
-													<p:ajax update="@form" resetValues="true" />
-												</p:commandButton>
+											<p:commandButton value="Limpar" process="@this"
+												update="panel" action="#{estadoController.limpar}">
+												<p:ajax update="@form" resetValues="true" />
+											</p:commandButton>
 
-											</f:facet>
+										</f:facet>
 
-											<f:facet name="right">
-												<p:commandButton value="Excluir" icon="pi pi-trash"
-													process="@form" update="panel"
-													action="#{estadoController.excluir}">
-													<p:confirm header="Confirmação"
-														message="Confirma a exclusão?" />
-												</p:commandButton>
-											</f:facet>
-										</p:toolbar>
-									</p:panel>
+										<f:facet name="right">
+											<p:commandButton value="Excluir" icon="pi pi-trash"
+												process="@form" update="panel"
+												action="#{estadoController.excluir}">
+												<p:confirm header="Confirmação"
+													message="Confirma a exclusão?" />
+											</p:commandButton>
+										</f:facet>
+									</p:toolbar>
+								</p:panel>
 
-									<p:confirmDialog global="true" showEffect="fade"
-										hideEffect="fade">
-										<p:commandButton value="Sim" type="button"
-											styleClass="ui-confirmdialog-yes" />
-										<p:commandButton value="Não" type="button"
-											styleClass="ui-confirmdialog-no" />
-									</p:confirmDialog>
+								<p:confirmDialog global="true" showEffect="fade"
+									hideEffect="fade">
+									<p:commandButton value="Sim" type="button"
+										styleClass="ui-confirmdialog-yes" />
+									<p:commandButton value="Não" type="button"
+										styleClass="ui-confirmdialog-no" />
+								</p:confirmDialog>
 
-								
+
 							</div>
 
 
