@@ -174,7 +174,7 @@ a.article, a.article:hover {
 	background: #007bff;
 	height: 72px;
 	text-align: center;
-	/*position: fixed;*/
+	position: fixed;
 	bottom: 0;
 	display: block;
 	width: 100%;
