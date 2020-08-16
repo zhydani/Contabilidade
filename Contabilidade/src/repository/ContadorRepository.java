@@ -29,12 +29,10 @@ public class ContadorRepository extends Repository<Contador> {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  p.id, p.nome, p.matricula, c.nome as nomeCidade ");
+		sql.append("  p.id, p.nome, p.crc ");
 		sql.append("FROM ");
-		sql.append("  Contador p, ");
-		sql.append("  Cidade c ");
+		sql.append("  Contador p ");
 		sql.append("WHERE ");
-		sql.append("  p.idcidade = c.id AND ");
 		sql.append("  upper(p.nome) like upper(?1) ");
 
 		Query query = getEntityManager().createNativeQuery(sql.toString());
