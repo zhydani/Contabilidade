@@ -88,6 +88,13 @@
 									<p:outputLabel value="Senha:" />
 									<p:inputText value="#{contadorController.entity.senha}" />
 
+									<p:outputLabel value="Tipo de Usuário:" />
+									<p:selectOneMenu
+										value="#{contadorController.entity.tipoUsuario}">
+										<f:selectItem itemLabel="Selecione ..." itemValue="" />
+										<f:selectItems value="#{contadorController.listaTipoUsuario}"
+											var="tipo" itemLabel="#{tipo.label}" itemValue="#{tipo}" />
+									</p:selectOneMenu>
 
 
 
@@ -157,7 +164,7 @@
 						<p:column headerText="CRC">
 							<h:outputText value="#{entity.crc}" />
 						</p:column>
-						
+
 						<p:column headerText="CPF">
 							<h:outputText value="#{entity.cpf}" />
 						</p:column>

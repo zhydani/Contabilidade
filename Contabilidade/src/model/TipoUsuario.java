@@ -17,21 +17,20 @@ public enum TipoUsuario {
 		this.label = label;
 		paginasAcesso = new ArrayList<String>();
 		if (id == 1) {
-//			paginasAcesso.add("pages/aluno.xhtml");
-//			paginasAcesso.add("pages/alunolisting.xhtml");
 			paginasAcesso.add("pages/contador.xhtml");
 			paginasAcesso.add("pages/contadorlisting.xhtml");
 			paginasAcesso.add("pages/contadorlistingsql.xhtml");
-			paginasAcesso.add("pages/estado.xhtml");
-			paginasAcesso.add("pages/estadolisting.xhtml");
-			paginasAcesso.add("pages/cidade.xhtml");
-			paginasAcesso.add("pages/cidadelisting.xhtml");
-//			paginasAcesso.add("pages/relatorioaluno.xhtml");
-			paginasAcesso.add("img-contador");
+			paginasAcesso.add("pages/organizacao.xhtml");
+			paginasAcesso.add("pages/empenho.xhtml");
+			paginasAcesso.add("pages/liquidacao.xhtml");
+			paginasAcesso.add("pages/pagamento.xhtml");
+			paginasAcesso.add("pages/classificacao-orcamentaria.xhtml");
+			paginasAcesso.add("pages/fornecedor-credor.xhtml");
 		} else {
-			paginasAcesso.add("pages/aluno.xhtml");
-			paginasAcesso.add("pages/estado.xhtml");
-			paginasAcesso.add("pages/cidade.xhtml");
+			paginasAcesso.add("pages/empenho.xhtml");
+			paginasAcesso.add("pages/liquidacao.xhtml");
+			paginasAcesso.add("pages/pagamento.xhtml");
+			paginasAcesso.add("pages/classificacao-orcamentaria.xhtml");
 		}
 		
 	}
