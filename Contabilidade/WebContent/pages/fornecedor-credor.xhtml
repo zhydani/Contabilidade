@@ -45,83 +45,84 @@
 
 
 				<tr>
-					<td><ui:insert>
+					<td>
 
-							<div class="container">
-								<div class="border-left mb-4 ">
-									<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Fornecedor/Credor</h4>
-								</div>
-
-								<p:growl id="growl" globalOnly="false" />
-								<p:panel id="panel">
-
-									<div class=" ui-g ui-fluid">
-										<div class="ui-g-12">
-											<div class=" card-w-title">
-												<p:panelGrid columns="1"
-													styleClass="form-group ui-panelgrid-blank" layout="grid">
-													<p:commandLink value="Nome: "
-														actionListener="#{fornecedorCredorController.abrirFornecedorCredorListing}"
-														process="@this" update="@none">
-
-														<p:ajax event="dialogReturn"
-															listener="#{fornecedorCredorController.obterFornecedorCredorListing}"
-															update="@form" />
-
-														<p:message for="itNome" escape="false" />
-													</p:commandLink>
-													<p:inputText id="itNome"
-														value="#{fornecedorCredorController.entity.nome}" required="true"
-														requiredMessage="Informe o nome." />
-
-													<p:outputLabel value="CPF/CNPJ: ">
-														<p:message for="itCpfCnpj" escape="false" />
-													</p:outputLabel>
-													<p:inputText id="itCpfCnpj"
-														value="#{fornecedorCredorController.entity.cpfCnpj}" />
-												</p:panelGrid>
-											</div>
-										</div>
-									</div>
-									<p:toolbar>
-										<f:facet name="left">
-											<p:commandButton value="Salvar" icon="pi pi-check"
-												process="@form" update="@form"
-												action="#{fornecedorCredorController.salvar}" />
-
-											<p:commandButton value="Limpar" process="@this"
-												update="panel" action="#{fornecedorCredorController.limpar}">
-												<p:ajax update="@form" resetValues="true" />
-											</p:commandButton>
-
-										</f:facet>
-
-										<f:facet name="right">
-											<p:commandButton value="Excluir" icon="pi pi-trash"
-												process="@form" update="panel"
-												action="#{fornecedorCredorController.excluir}">
-												<p:confirm header="Confirmação"
-													message="Confirma a exclusão?" />
-											</p:commandButton>
-										</f:facet>
-									</p:toolbar>
-								</p:panel>
-
-								<p:confirmDialog global="true" showEffect="fade"
-									hideEffect="fade">
-									<p:commandButton value="Sim" type="button"
-										styleClass="ui-confirmdialog-yes" />
-									<p:commandButton value="Não" type="button"
-										styleClass="ui-confirmdialog-no" />
-								</p:confirmDialog>
-
-
+						<div class="container">
+							<div class="border-left mb-4 ">
+								<h4 class="ml-3 py-2 font-weight-bold">Cadastro de
+									Fornecedor/Credor</h4>
 							</div>
 
+							<p:growl id="growl" globalOnly="false" />
+							<p:panel id="panel">
+
+								<div class=" ui-g ui-fluid">
+									<div class="ui-g-12">
+										<div class=" card-w-title">
+											<p:panelGrid columns="1"
+												styleClass="form-group ui-panelgrid-blank" layout="grid">
+												<p:commandLink value="Nome: "
+													actionListener="#{fornecedorCredorController.abrirFornecedorCredorListing}"
+													process="@this" update="@none">
+
+													<p:ajax event="dialogReturn"
+														listener="#{fornecedorCredorController.obterFornecedorCredorListing}"
+														update="@form" />
+
+													<p:message for="itNome" escape="false" />
+												</p:commandLink>
+												<p:inputText id="itNome"
+													value="#{fornecedorCredorController.entity.nome}"
+													required="true" requiredMessage="Informe o nome." />
+
+												<p:outputLabel value="CPF/CNPJ: ">
+													<p:message for="itCpfCnpj" escape="false" />
+												</p:outputLabel>
+												<p:inputText id="itCpfCnpj"
+													value="#{fornecedorCredorController.entity.cpfCnpj}" />
+											</p:panelGrid>
+										</div>
+									</div>
+								</div>
+								<p:toolbar>
+									<f:facet name="left">
+										<p:commandButton value="Salvar" icon="pi pi-check"
+											process="@form" update="@form"
+											action="#{fornecedorCredorController.salvar}" />
+
+										<p:commandButton value="Limpar" process="@this" update="panel"
+											action="#{fornecedorCredorController.limpar}">
+											<p:ajax update="@form" resetValues="true" />
+										</p:commandButton>
+
+									</f:facet>
+
+									<f:facet name="right">
+										<p:commandButton value="Excluir" icon="pi pi-trash"
+											process="@form" update="panel"
+											action="#{fornecedorCredorController.excluir}">
+											<p:confirm header="Confirmação"
+												message="Confirma a exclusão?" />
+										</p:commandButton>
+									</f:facet>
+								</p:toolbar>
+							</p:panel>
+
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="Sim" type="button"
+									styleClass="ui-confirmdialog-yes" />
+								<p:commandButton value="Não" type="button"
+									styleClass="ui-confirmdialog-no" />
+							</p:confirmDialog>
+
+
+						</div>
 
 
 
-						</ui:insert></td>
+
+					</td>
 				</tr>
 			</table>
 		</h:form>

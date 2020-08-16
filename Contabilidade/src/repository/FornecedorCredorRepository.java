@@ -1,6 +1,7 @@
 package repository;
 
 import java.util.List;
+import java.math.BigInteger;
 
 import javax.persistence.Query;
 
@@ -29,6 +30,26 @@ public class FornecedorCredorRepository extends Repository<FornecedorCredor> {
 			query.setMaxResults(maxResults);
 
 		return query.getResultList();
+	}
+	
+	public boolean contains(Integer id, String cpfcnpj) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT ");
+		sql.append("  count(*) ");
+		sql.append("FROM ");
+		sql.append("  FornecedorCredor a ");
+		sql.append("WHERE ");
+		sql.append("  upper(a.cpfCnpj) = upper(?) ");
+		sql.append("  AND a.id <> ? ");
+		
+		Query query = getEntityManager().createNativeQuery(sql.toString());
+
+		query.setParameter(1, cpfcnpj);
+		query.setParameter(2, id == null ? -1 : id);
+		
+		BigInteger resultado = (BigInteger) query.getSingleResult();
+		
+		return (resultado == null || resultado.equals(BigInteger.ZERO)) ? false : true;
 	}
 	
 }
