@@ -38,7 +38,7 @@
 			<p:graphicImage name="/images/loading.gif" />
 		</p:dialog>
 
-		<h:form  id="form">
+		<h:form id="form">
 			<div class="container mb-5 pb-3">
 				<div class="border-left mb-4 ">
 					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Empenho</h4>
@@ -57,6 +57,11 @@
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
+									<p:outputLabel value="Número: ">
+										<p:message for="itNumero" escape="false" />
+									</p:outputLabel>
+									<p:inputText id="itNumero"
+										value="#{empenhoController.entity.numero}" />
 
 
 									<p:outputLabel value="Valor: ">
@@ -125,7 +130,7 @@
 												<p:inputText id="itOrganizacao"
 													value="#{empenhoController.entity.organizacao.nome}"
 													required="true" requiredMessage="Informe a organizacao."
-													placeholder="Organização" size="30"/>
+													placeholder="Organização" size="30" />
 											</div>
 										</h:panelGrid>
 
@@ -144,7 +149,7 @@
 												<p:inputText id="itClassificacaoOrcamentaria"
 													value="#{empenhoController.entity.classificacaoOrcamentaria.numero}"
 													required="true" requiredMessage="Informe a organizacao."
-													placeholder="Classificação Orçamentária" size="57"/>
+													placeholder="Classificação Orçamentária" size="57" />
 											</div>
 										</h:panelGrid>
 
@@ -163,7 +168,7 @@
 												<p:inputText id="itFornecedorCredor"
 													value="#{empenhoController.entity.fornecedorCredor.nome}"
 													required="true" requiredMessage="Informe a organizacao."
-													placeholder="Fornecedor ou Credor" size="30"/>
+													placeholder="Fornecedor ou Credor" size="30" />
 											</div>
 										</h:panelGrid>
 									</p:panelGrid>

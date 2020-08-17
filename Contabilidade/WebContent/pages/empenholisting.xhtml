@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui" >
 	
 <h:head>
-	<title>Consulta de Organização</title>
+	<title>Consulta de Empenhos</title>
 </h:head>
 
 <h:body>	
@@ -29,10 +29,10 @@
 								<div class="card card-w-title">
 		                            <div class="ui-inputgroup">
 		                                <p:inputText id="itFiltro" 
-		                                	value="#{organizacaoListing.filtro}"
+		                                	value="#{empenhoListing.filtro}"
 		                                	placeholder="Informe o nome da Organização ..." />        
 		                                <p:commandButton value="Pesquisar"
-											actionListener="#{organizacaoListing.pesquisar}"
+											actionListener="#{empenhoListing.pesquisar}"
 											process="@this itFiltro" update="dtListagem" /> 
 		                            </div>
 			                    </div>
@@ -50,33 +50,23 @@
 								var="entity" rowIndexVar="row"
 								paginator="false"
 								reflow="true"
-								value="#{organizacaoListing.list}">
+								value="#{empenhoListing.list}">
 								<p:column headerText="N." style="width: 30px; text-align: center;">
 									<h:outputText value="#{row + 1}" />
 								</p:column>
 			
-								<p:column headerText="Nome">
-									<p:commandLink value="#{entity.nome}"
-										actionListener="#{organizacaoListing.select(entity.id)}" 
+								<p:column headerText="Número">
+									<p:commandLink value="#{entity.numero}"
+										actionListener="#{empenhoListing.select(entity.id)}" 
 										process="@this" update="@form" resetValues="true"/>
 								</p:column>
 								
-								<p:column headerText="Esfera">
-									<p:commandLink value="#{entity.tipoEsfera.label}"
-										actionListener="#{organizacaoListing.select(entity.id)}" 
-										process="@this" update="@form" resetValues="true"/>
-								</p:column>
-								
-								<p:column headerText="Poder">
-									<p:commandLink value="#{entity.tipoPoder.label}"
-										actionListener="#{organizacaoListing.select(entity.id)}" 
-										process="@this" update="@form" resetValues="true"/>
-								</p:column>
+							
 			
 								
 			
 								<f:facet name="footer">
-							        Total de #{organizacaoListing.list.size()} Organizações.
+							        Total de #{empenhoListing.list.size()} Empenhos.
 							    </f:facet>
 							</p:dataTable>
 						</div>

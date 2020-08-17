@@ -14,6 +14,8 @@ import model.validation.Validation;
 @Entity
 public class Empenho extends DefaultEntity<Empenho> {
 
+	private String numero;
+	
 	private Double valor;
 	
 	@Column(nullable = false)
@@ -89,6 +91,14 @@ public class Empenho extends DefaultEntity<Empenho> {
 
 	public void setFornecedorCredor(FornecedorCredor fornecedorCredor) {
 		this.fornecedorCredor = fornecedorCredor;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	
 	
