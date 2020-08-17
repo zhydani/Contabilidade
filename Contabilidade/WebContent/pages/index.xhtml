@@ -46,11 +46,14 @@
 							<div class="card-header">Empenhos</div>
 							<div class="card-body">
 								<h5 class="card-title">Total de despesa Empenhada</h5>
-								<h:outputText id="gastos" value="#{gastos.empenhovalor}" />
-								<br />
-								<p:commandButton class="mt-3" value="Gerar valor"
-									actionListener="#{gastos.empenho}" process="@this "
-									update="gastos" />
+								<h:outputText id="gastos" value="#{gastos.empenhovalor}">
+									<f:convertNumber locale="pt_BR" currencySymbol="R$"
+										type="currency" />
+									</h:outputLabel>
+									<br />
+									<p:commandButton class="mt-3" value="Gerar valor"
+										actionListener="#{gastos.empenho}" process="@this "
+										update="gastos" />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -59,11 +62,14 @@
 							<div class="card-header">Liquidações</div>
 							<div class="card-body">
 								<h5 class="card-title">Total de despesa Liquidada</h5>
-								<h:outputText id="liquidado" value="#{gastos.liquidacaovalor}" />
-								<br />
-								<p:commandButton class="mt-3" value="Gerar valor"
-									actionListener="#{gastos.liquidacao}" process="@this "
-									update="liquidado" />
+								<h:outputText id="liquidado" value="#{gastos.liquidacaovalor}">
+									<f:convertNumber locale="pt_BR" currencySymbol="R$"
+										type="currency" />
+									</h:outputLabel>
+									<br />
+									<p:commandButton class="mt-3" value="Gerar valor"
+										actionListener="#{gastos.liquidacao}" process="@this "
+										update="liquidado" />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -72,11 +78,14 @@
 							<div class="card-header">Pagamentos</div>
 							<div class="card-body">
 								<h5 class="card-title">Total de despesa Paga</h5>
-								<h:outputText id="pago" value="#{gastos.pagamentovalor}" />
-								<br />
-								<p:commandButton class="mt-3" value="Gerar valor"
-									actionListener="#{gastos.pagamento}" process="@this "
-									update="pago" />
+								<h:outputText id="pago" value="#{gastos.pagamentovalor}">
+									<f:convertNumber locale="pt_BR" currencySymbol="R$"
+										type="currency" />
+									</h:outputLabel>
+									<br />
+									<p:commandButton class="mt-3" value="Gerar valor"
+										actionListener="#{gastos.pagamento}" process="@this "
+										update="pago" />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div></td>
@@ -94,9 +103,11 @@
 										process="@this itFiltro" update="result" />
 								</div>
 								<h:outputText id="result"
-									value="#{empenhoOrganizacaoListing.valor}" />
-								<br />
-
+									value="#{empenhoOrganizacaoListing.valor}">
+									<f:convertNumber locale="pt_BR" currencySymbol="R$"
+										type="currency" />
+									</h:outputLabel>
+									<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -115,9 +126,11 @@
 										process="@this itFiltro1" update="result1" />
 								</div>
 								<h:outputText id="result1"
-									value="#{liquidacaoOrganizacaoListing.valor}" />
-								<br />
-
+									value="#{liquidacaoOrganizacaoListing.valor}">
+									<f:convertNumber locale="pt_BR" currencySymbol="R$"
+										type="currency" />
+									</h:outputLabel>
+									<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -136,9 +149,11 @@
 										process="@this itFiltro2" update="result2" />
 								</div>
 								<h:outputText id="result2"
-									value="#{pagamentoOrganizacaoListing.valor}" />
-								<br />
-
+									value="#{pagamentoOrganizacaoListing.valor}">
+									<f:convertNumber locale="pt_BR" currencySymbol="R$"
+										type="currency" />
+									</h:outputLabel>
+									<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div></td>
