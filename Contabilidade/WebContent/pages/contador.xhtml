@@ -77,8 +77,8 @@
 									<p:outputLabel value="CPF: ">
 										<p:message for="itCpf" escape="false" />
 									</p:outputLabel>
-									<p:inputText id="itCpf"
-										value="#{contadorController.entity.cpf}" />
+									<p:inputMask id="itCpf"
+										value="#{contadorController.entity.cpf}" mask="999.999.999-99"/>
 
 									<p:outputLabel value="Data de Aniversário:" />
 									<p:calendar
@@ -86,7 +86,7 @@
 										pattern="dd/MM/yyyy" />
 
 									<p:outputLabel value="E-mail:" />
-									<p:inputText value="#{contadorController.entity.email}" />
+									<p:inputText value="#{contadorController.entity.email}"/>
 
 									<p:outputLabel value="Senha:" />
 									<p:inputText value="#{contadorController.entity.senha}" />

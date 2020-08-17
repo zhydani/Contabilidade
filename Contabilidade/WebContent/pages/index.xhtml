@@ -40,6 +40,9 @@
 		</p:dialog>
 
 		<h:form id="form">
+			<div class="text-left mb-4 ">
+				<h4 class="py-2 font-weight-bold">Depesa Pública</h4>
+			</div>
 			<table width="100%" class="mb-4">
 				<tr>
 					<td><div class="card text-center">
@@ -49,11 +52,11 @@
 								<h:outputText id="gastos" value="#{gastos.empenhovalor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputText>
-									<br />
-									<p:commandButton class="mt-3" value="Gerar valor"
-										actionListener="#{gastos.empenho}" process="@this "
-										update="gastos" />
+								</h:outputText>
+								<br />
+								<p:commandButton class="mt-3" value="Gerar valor"
+									actionListener="#{gastos.empenho}" process="@this "
+									update="gastos" />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -65,11 +68,11 @@
 								<h:outputText id="liquidado" value="#{gastos.liquidacaovalor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputText>
-									<br />
-									<p:commandButton class="mt-3" value="Gerar valor"
-										actionListener="#{gastos.liquidacao}" process="@this "
-										update="liquidado" />
+								</h:outputText>
+								<br />
+								<p:commandButton class="mt-3" value="Gerar valor"
+									actionListener="#{gastos.liquidacao}" process="@this "
+									update="liquidado" />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -81,11 +84,11 @@
 								<h:outputText id="pago" value="#{gastos.pagamentovalor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputText>
-									<br />
-									<p:commandButton class="mt-3" value="Gerar valor"
-										actionListener="#{gastos.pagamento}" process="@this "
-										update="pago" />
+								</h:outputText>
+								<br />
+								<p:commandButton class="mt-3" value="Gerar valor"
+									actionListener="#{gastos.pagamento}" process="@this "
+									update="pago" />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div></td>
@@ -106,8 +109,8 @@
 									value="#{empenhoOrganizacaoListing.valor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputText>
-									<br />
+								</h:outputText>
+								<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -129,8 +132,8 @@
 									value="#{liquidacaoOrganizacaoListing.valor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputText>
-									<br />
+								</h:outputText>
+								<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div>
@@ -152,8 +155,8 @@
 									value="#{pagamentoOrganizacaoListing.valor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputText>
-									<br />
+								</h:outputText>
+								<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
 						</div></td>
