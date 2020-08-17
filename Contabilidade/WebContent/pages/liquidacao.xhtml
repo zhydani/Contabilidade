@@ -57,6 +57,11 @@
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
+									<p:outputLabel value="Número: ">
+										<p:message for="itNumero" escape="false" />
+									</p:outputLabel>
+									<p:inputText id="itNumero"
+										value="#{liquidacaoController.entity.numero}" />
 
 
 									<p:outputLabel value="Valor: ">
