@@ -34,6 +34,7 @@ public enum TipoUsuario {
 			paginasAcesso.add("pages/fornecedor-credor.xhtml");
 			paginasAcesso.add("pages/fornecedorcredorlisting.xhtml");
 		} else {
+			paginasAcesso.add("pages/index.xhtml");
 			paginasAcesso.add("pages/empenho.xhtml");
 			paginasAcesso.add("pages/empenholisting.xhtml");
 			paginasAcesso.add("pages/liquidacao.xhtml");

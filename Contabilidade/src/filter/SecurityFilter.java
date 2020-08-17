@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import model.Professor;
+import model.Contador;
 
 @WebFilter(filterName = "SecurityFilter", urlPatterns = {"/faces/pages/*"})
 public class SecurityFilter implements Filter {
@@ -29,88 +29,49 @@ public class SecurityFilter implements Filter {
 		System.out.println(endereco);
 		
 // 	 	Para desabilitar o filter, descomente as duas proximas linhas e comente o restante		
-		chain.doFilter(request, response);
-		return;
-//		
-//		// filtrando o nome da pagina
-//<<<<<<< HEAD
-////		if (endereco != null) {
-////			int inicio = endereco.lastIndexOf("/faces/") + 7;
-////			int fim = endereco.length();
-////			endereco = endereco.substring(inicio, fim);
-////		}
-////		System.out.println(endereco);
-////		
-////		// caso seja a pagina de login .. nao sera feita nenhuma restricao
-////		// deixo o fluxo seguir
-////		if (endereco.equals("login.xhtml")|| 
-////				servletRequest.getRequestURI().matches(".*(css|jpg|png|gif|js)")) {
-////			chain.doFilter(request, response);
-////			return;
-////		}
-////		
-////		// retorna a sessao corrente (false - para nao criar uma nova sessao)
-////		HttpSession session = servletRequest.getSession(false);
-////		
-////		Professor usuario = null;
-////		if (session != null)
-////			usuario = (Professor) session.getAttribute("usuarioLogado");
-////		
-////		if (usuario == null) {
-////			((HttpServletResponse) response).sendRedirect("/Academico/faces/login.xhtml");
-////		}  else {
-////			// nesse local podemos trabalhar as permissoes por pagina
-////			if (usuario.getTipoUsuario().getPaginasAcesso().contains(endereco)) {
-////				// segue o fluxo 
-////				chain.doFilter(request, response);
-////				return;
-////			} else {
-////				// seria melhor redirecionar para uma pagina dizendo que nao tem permissao
-////				((HttpServletResponse) response).sendRedirect("/Academico/faces/login.xhtml");
-////			}
-////
-////		}
-//=======
-//		if (endereco != null) {
-//			int inicio = endereco.lastIndexOf("/faces/") + 7;
-//			int fim = endereco.length();
-//			endereco = endereco.substring(inicio, fim);
-//		}
-//		System.out.println(endereco);
-//		
-//		// caso seja a pagina de login .. nao sera feita nenhuma restricao
-//		// deixo o fluxo seguir
-//		if (endereco.equals("login.xhtml")|| 
-//				servletRequest.getRequestURI().matches(".*(css|jpg|png|gif|js)")) {
-//			chain.doFilter(request, response);
-//			return;
-//		}
-//		
-//		// retorna a sessao corrente (false - para nao criar uma nova sessao)
-//		HttpSession session = servletRequest.getSession(false);
-//		
-//		Professor usuario = null;
-//		if (session != null)
-//			usuario = (Professor) session.getAttribute("usuarioLogado");
-//		
-//		if (usuario == null) {
-//			((HttpServletResponse) response).sendRedirect("/Academico/faces/login.xhtml");
-//		}  else {
-//			// nesse local podemos trabalhar as permissoes por pagina
-//			if (usuario.getTipoUsuario().getPaginasAcesso().contains(endereco)) {
-//				// segue o fluxo 
-//				chain.doFilter(request, response);
-//				return;
-//			} else {
-//				for (String paginas : usuario.getTipoUsuario().getPaginasAcesso()) {
-//					System.out.println(paginas);
-//				}
-//				// seria melhor redirecionar para uma pagina dizendo que nao tem permissao
-//				((HttpServletResponse) response).sendRedirect("/Academico/faces/login.xhtml");
-//			}
-//
-//		}
-//>>>>>>> branch 'master' of https://github.com/janiojunior/Academico.git
+//		chain.doFilter(request, response);
+//		return;
+		
+		// filtrando o nome da pagina
+		if (endereco != null) {
+			int inicio = endereco.lastIndexOf("/faces/") + 7;
+			int fim = endereco.length();
+			endereco = endereco.substring(inicio, fim);
+		}
+		System.out.println(endereco);
+		
+		// caso seja a pagina de login .. nao sera feita nenhuma restricao
+		// deixo o fluxo seguir
+		if (endereco.equals("login.xhtml")|| 
+				servletRequest.getRequestURI().matches(".*(css|jpg|png|gif|js)")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		
+		// retorna a sessao corrente (false - para nao criar uma nova sessao)
+		HttpSession session = servletRequest.getSession(false);
+		
+		Contador usuario = null;
+		if (session != null)
+			usuario = (Contador) session.getAttribute("usuarioLogado");
+		
+		if (usuario == null) {
+			((HttpServletResponse) response).sendRedirect("/Contabilidade/faces/login.xhtml");
+		}  else {
+			// nesse local podemos trabalhar as permissoes por pagina
+			if (usuario.getTipoUsuario().getPaginasAcesso().contains(endereco)) {
+				// segue o fluxo 
+				chain.doFilter(request, response);
+				return;
+			} else {
+				for (String paginas : usuario.getTipoUsuario().getPaginasAcesso()) {
+					System.out.println(paginas);
+				}
+				// seria melhor redirecionar para uma pagina dizendo que nao tem permissao
+				((HttpServletResponse) response).sendRedirect("/Contabilidade/faces/login.xhtml");
+			}
+
+		}
 		
 	}
 	
