@@ -49,7 +49,7 @@
 								<h:outputText id="gastos" value="#{gastos.empenhovalor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputLabel>
+									</h:outputText>
 									<br />
 									<p:commandButton class="mt-3" value="Gerar valor"
 										actionListener="#{gastos.empenho}" process="@this "
@@ -65,7 +65,7 @@
 								<h:outputText id="liquidado" value="#{gastos.liquidacaovalor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputLabel>
+									</h:outputText>
 									<br />
 									<p:commandButton class="mt-3" value="Gerar valor"
 										actionListener="#{gastos.liquidacao}" process="@this "
@@ -81,7 +81,7 @@
 								<h:outputText id="pago" value="#{gastos.pagamentovalor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputLabel>
+									</h:outputText>
 									<br />
 									<p:commandButton class="mt-3" value="Gerar valor"
 										actionListener="#{gastos.pagamento}" process="@this "
@@ -106,7 +106,7 @@
 									value="#{empenhoOrganizacaoListing.valor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputLabel>
+									</h:outputText>
 									<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
@@ -129,7 +129,7 @@
 									value="#{liquidacaoOrganizacaoListing.valor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputLabel>
+									</h:outputText>
 									<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
@@ -152,7 +152,7 @@
 									value="#{pagamentoOrganizacaoListing.valor}">
 									<f:convertNumber locale="pt_BR" currencySymbol="R$"
 										type="currency" />
-									</h:outputLabel>
+									</h:outputText>
 									<br />
 							</div>
 							<div class="card-footer text-muted">Tocantins</div>
