@@ -23,7 +23,7 @@ public class LoginController {
 			// adicionando um ussuario na sessao
 			Session.getInstance().setAttribute("usuarioLogado", contador);
 			// redirecionando para o template
-			return "pages/contador.xhtml?faces-redirect=true";
+			return "pages/index.xhtml?faces-redirect=true";
 		}
 		Util.addMessageError("Login ou Senha inválido.");
 		return "";

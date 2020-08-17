@@ -40,12 +40,114 @@
 		</p:dialog>
 
 		<h:form id="form">
-			<table width="100%">
+			<table width="100%" class="mb-4">
+				<tr>
+					<td><div class="card text-center">
+							<div class="card-header">Empenhos</div>
+							<div class="card-body">
+								<h5 class="card-title">Total de despesa Empenhada</h5>
+								<h:outputText id="gastos" value="#{gastos.empenhovalor}" />
+								<br />
+								<p:commandButton class="mt-3" value="Gerar valor"
+									actionListener="#{gastos.empenho}" process="@this "
+									update="gastos" />
+							</div>
+							<div class="card-footer text-muted">Tocantins</div>
+						</div>
+
+						<div class="card text-center">
+							<div class="card-header">Liquidações</div>
+							<div class="card-body">
+								<h5 class="card-title">Total de despesa Liquidada</h5>
+								<h:outputText id="liquidado" value="#{gastos.liquidacaovalor}" />
+								<br />
+								<p:commandButton class="mt-3" value="Gerar valor"
+									actionListener="#{gastos.liquidacao}" process="@this "
+									update="liquidado" />
+							</div>
+							<div class="card-footer text-muted">Tocantins</div>
+						</div>
+
+						<div class="card text-center mb-5">
+							<div class="card-header">Pagamentos</div>
+							<div class="card-body">
+								<h5 class="card-title">Total de despesa Paga</h5>
+								<h:outputText id="pago" value="#{gastos.pagamentovalor}" />
+								<br />
+								<p:commandButton class="mt-3" value="Gerar valor"
+									actionListener="#{gastos.pagamento}" process="@this "
+									update="pago" />
+							</div>
+							<div class="card-footer text-muted">Tocantins</div>
+						</div></td>
+					<td><div class="card text-center">
+							<div class="card-header">Empenhos</div>
+							<div class="card-body">
+								<h5 class="card-title">Total de despesa Empenhada por
+									Organização</h5>
+								<div class="ui-inputgroup justify-content-center mb-3">
+									<p:inputText id="itFiltro"
+										value="#{empenhoOrganizacaoListing.filtro}"
+										placeholder="Organização" />
+									<p:commandButton value="Pesquisar"
+										actionListener="#{empenhoOrganizacaoListing.pesquisar}"
+										process="@this itFiltro" update="result" />
+								</div>
+								<h:outputText id="result"
+									value="#{empenhoOrganizacaoListing.valor}" />
+								<br />
+
+							</div>
+							<div class="card-footer text-muted">Tocantins</div>
+						</div>
+
+						<div class="card text-center">
+							<div class="card-header">Liquidação</div>
+							<div class="card-body">
+								<h5 class="card-title">Total de despesa Liquidada por
+									Organização</h5>
+								<div class="ui-inputgroup justify-content-center mb-3">
+									<p:inputText id="itFiltro1"
+										value="#{liquidacaoOrganizacaoListing.filtro}"
+										placeholder="Organização" />
+									<p:commandButton value="Pesquisar"
+										actionListener="#{liquidacaoOrganizacaoListing.pesquisar}"
+										process="@this itFiltro1" update="result1" />
+								</div>
+								<h:outputText id="result1"
+									value="#{liquidacaoOrganizacaoListing.valor}" />
+								<br />
+
+							</div>
+							<div class="card-footer text-muted">Tocantins</div>
+						</div>
+
+						<div class="card text-center mb-5">
+							<div class="card-header">Pagamentos</div>
+							<div class="card-body">
+								<h5 class="card-title">Total de despesa Paga por
+									Organização</h5>
+								<div class="ui-inputgroup justify-content-center mb-3">
+									<p:inputText id="itFiltro2"
+										value="#{pagamentoOrganizacaoListing.filtro}"
+										placeholder="Organização" />
+									<p:commandButton value="Pesquisar"
+										actionListener="#{pagamentoOrganizacaoListing.pesquisar}"
+										process="@this itFiltro2" update="result2" />
+								</div>
+								<h:outputText id="result2"
+									value="#{pagamentoOrganizacaoListing.valor}" />
+								<br />
+
+							</div>
+							<div class="card-footer text-muted">Tocantins</div>
+						</div></td>
+				</tr>
 
 
 
 
-				
+
 			</table>
 		</h:form>
 	</ui:define>
