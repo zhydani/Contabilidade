@@ -38,10 +38,10 @@
 			<p:graphicImage name="/images/loading.gif" />
 		</p:dialog>
 
-		<h:form  id="form">
+		<h:form id="form">
 			<div class="container mb-5 pb-3">
 				<div class="border-left mb-4 ">
-					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Empenho</h4>
+					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Pagamento</h4>
 				</div>
 				<p:growl id="growl" globalOnly="false" showDetail="false"
 					showSummary="false" skipDetailIfEqualsSummary="true" />
@@ -57,116 +57,50 @@
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
+									<p:outputLabel value="Número: ">
+										<p:message for="itNumero" escape="false" />
+									</p:outputLabel>
+									<p:inputText id="itNumero"
+										value="#{pagamentoController.entity.numero}" />
 
 
 									<p:outputLabel value="Valor: ">
 										<p:message for="itValor" escape="false" />
 									</p:outputLabel>
 									<p:inputText id="itValor"
-										value="#{empenhoController.entity.valor}" />
+										value="#{pagamentoController.entity.valor}" />
 
 									<p:outputLabel value="Data de Emissão:" />
-									<p:calendar value="#{empenhoController.entity.dataEmissao}"
+									<p:calendar value="#{pagamentoController.entity.dataEmissao}"
 										pattern="dd/MM/yyyy" />
 
-									<p:outputLabel value="Serviço ou Produto:" />
-									<p:inputTextarea rows="6" cols="33"
-										value="#{empenhoController.entity.produtoServico}" />
-
-									<!-- <p:outputLabel value="Classificação Orçamentária:" />
-									<p:selectOneMenu id="selectClassificacaoOrcamentaria"
-										value="#{empenhoController.entity.classificacaoOrcamentaria}">
-										<f:selectItem
-											itemLabel="Selecione uma Classificação Orçamentária ..."
-											itemValue="null" />
-										<f:selectItems
-											value="#{empenhoController.listaClassificacaoOrcamentaria}"
-											var="classificacaoOrcamentaria"
-											itemLabel="#{classificacaoOrcamentaria.numero}"
-											itemValue="#{classificacaoOrcamentaria}" />
-									</p:selectOneMenu>
-
-									<p:outputLabel value="Organização: " />
-									<p:selectOneMenu id="selectOrganizacao"
-										value="#{empenhoController.entity.organizacao}">
-										<f:selectItem itemLabel="Selecione uma Organização ..."
-											itemValue="null" />
-										<f:selectItems value="#{empenhoController.listaOrganizacao}"
-											var="organizacao" itemLabel="#{organizacao.nome}"
-											itemValue="#{organizacao}" />
-									</p:selectOneMenu>
-
-									<p:outputLabel value="Fornecedor ou Credor:" />
-									<p:selectOneMenu id="selectFornecedorCredor"
-										value="#{empenhoController.entity.fornecedorCredor}">
-										<f:selectItem itemLabel="Selecione um Fornecedor ou Credor..."
-											itemValue="null" />
-										<f:selectItems
-											value="#{empenhoController.listaFornecedorCredor}"
-											var="fornecedorCredor" itemLabel="#{fornecedorCredor.nome}"
-											itemValue="#{fornecedorCredor}" />
-									</p:selectOneMenu> -->
 
 
-									<p:panelGrid columns="3">
-
-										<h:panelGrid columns="1">
 
 
-											<div class="ui-inputgroup">
-												<p:commandButton value="Pesquisar"
-													actionListener="#{empenhoController.abrirOrganizacaoListing}"
-													process="@this" update="@none">
-													<p:ajax event="dialogReturn"
-														listener="#{empenhoController.obterOrganizacaoListing}"
-														update="itOrganizacao" />
-													<p:message for="itOrganizacao" escape="false" />
-												</p:commandButton>
-												<p:inputText id="itOrganizacao"
-													value="#{empenhoController.entity.organizacao.nome}"
-													required="true" requiredMessage="Informe a organizacao."
-													placeholder="Organização" size="30"/>
-											</div>
-										</h:panelGrid>
 
-										<h:panelGrid columns="1">
+									<h:panelGrid columns="1">
 
-
-											<div class="ui-inputgroup">
-												<p:commandButton value="Pesquisar"
-													actionListener="#{empenhoController.abrirClassificacaoOrcamentariaListing}"
-													process="@this" update="@none">
-													<p:ajax event="dialogReturn"
-														listener="#{empenhoController.obterClassificacaoOrcamentariaListing}"
-														update="itClassificacaoOrcamentaria" />
-													<p:message for="itClassificacaoOrcamentaria" escape="false" />
-												</p:commandButton>
-												<p:inputText id="itClassificacaoOrcamentaria"
-													value="#{empenhoController.entity.classificacaoOrcamentaria.numero}"
-													required="true" requiredMessage="Informe a organizacao."
-													placeholder="Classificação Orçamentária" size="57"/>
-											</div>
-										</h:panelGrid>
-
-										<h:panelGrid columns="1">
+										<div class="ui-inputgroup">
+											<p:commandButton value="Pesquisar"
+												actionListener="#{pagamentoController.abrirLiquidacaoListing}"
+												process="@this" update="@none">
+												<p:ajax event="dialogReturn"
+													listener="#{pagamentoController.obterLiquidacaoListing}"
+													update="itLiquidacao" />
+												<p:message for="itLiquidacao" escape="false" />
+											</p:commandButton>
+											<p:inputText id="itLiquidacao"
+												value="#{pagamentoController.entity.liquidacao.numero}"
+												required="true" requiredMessage="Informe a liquidacao."
+												placeholder="Liquidacao" size="138" />
+										</div>
+									</h:panelGrid>
 
 
-											<div class="ui-inputgroup">
-												<p:commandButton value="Pesquisar"
-													actionListener="#{empenhoController.abrirFornecedorCredorListing}"
-													process="@this" update="@none">
-													<p:ajax event="dialogReturn"
-														listener="#{empenhoController.obterFornecedorCredorListing}"
-														update="itFornecedorCredor" />
-													<p:message for="itFornecedorCredor" escape="false" />
-												</p:commandButton>
-												<p:inputText id="itFornecedorCredor"
-													value="#{empenhoController.entity.fornecedorCredor.nome}"
-													required="true" requiredMessage="Informe a organizacao."
-													placeholder="Fornecedor ou Credor" size="30"/>
-											</div>
-										</h:panelGrid>
-									</p:panelGrid>
+
+
+
 
 
 								</p:panelGrid>
@@ -179,25 +113,25 @@
 						<f:facet name="left">
 							<p:commandButton value="Salvar" icon="pi pi-check"
 								process="@form" update="@form"
-								action="#{empenhoController.salvar}" />
+								action="#{pagamentoController.salvar}" />
 
 							<p:commandButton value="Limpar" process="@this" update="panel"
-								action="#{empenhoController.limpar}">
+								action="#{pagamentoController.limpar}">
 								<p:ajax update="@form" resetValues="true" />
 							</p:commandButton>
 
 						</f:facet>
 
 						<f:facet name="right">
-							<p:commandButton value="Gerar PDF de todos os Empenhos"
+							<p:commandButton value="Gerar PDF de todos os Pagamentos"
 								process="@this"
-								actionListener="#{empenhoController.abrirRelatorioEmpenhos()}"
+								actionListener="#{pagamentoController.abrirRelatorioPagamentos()}"
 								onclick="this.form.target='_blank'">
 							</p:commandButton>
 
 							<p:commandButton value="Excluir" icon="pi pi-trash"
 								process="@form" update="panel"
-								action="#{empenhoController.excluir}">
+								action="#{pagamentoController.excluir}">
 								<p:confirm header="Confirmação" message="Confirma a exclusão?" />
 							</p:commandButton>
 						</f:facet>

@@ -14,6 +14,8 @@ import model.validation.Validation;
 @Entity
 public class Pagamento extends DefaultEntity<Pagamento> {
 
+	private String numero;
+	
 	private Double valor;
 
 	@Column(nullable = false)
@@ -54,6 +56,14 @@ public class Pagamento extends DefaultEntity<Pagamento> {
 
 	public void setLiquidacao(Liquidacao liquidacao) {
 		this.liquidacao = liquidacao;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 }
