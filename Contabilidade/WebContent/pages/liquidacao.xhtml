@@ -38,10 +38,10 @@
 			<p:graphicImage name="/images/loading.gif" />
 		</p:dialog>
 
-		<h:form>
-			<div class="container mb-5 pb-5">
+		<h:form id="form">
+			<div class="container mb-5 pb-3">
 				<div class="border-left mb-4 ">
-					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Contador</h4>
+					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Liquidação</h4>
 				</div>
 				<p:growl id="growl" globalOnly="false" showDetail="false"
 					showSummary="false" skipDetailIfEqualsSummary="true" />
@@ -56,49 +56,44 @@
 							<div class="card card-w-title">
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
-									<p:commandLink value="Nome: "
-										actionListener="#{contadorController.abrirContadorListing}"
-										process="@this" update="@none">
 
-										<p:ajax event="dialogReturn"
-											listener="#{contadorController.obterContadorListing}"
-											update="@form" />
 
-									</p:commandLink>
-									<p:inputText id="itNome"
-										value="#{contadorController.entity.nome}" required="true"
-										requiredMessage="Informe o nome." />
 
-									<p:outputLabel value="CRC: ">
-										<p:message for="itCrc" escape="false" />
+									<p:outputLabel value="Valor: ">
+										<p:message for="itValor" escape="false" />
 									</p:outputLabel>
-									<p:inputText id="itCrc"
-										value="#{contadorController.entity.crc}" />
+									<p:inputText id="itValor"
+										value="#{liquidacaoController.entity.valor}" />
 
-									<p:outputLabel value="CPF: ">
-										<p:message for="itCpf" escape="false" />
-									</p:outputLabel>
-									<p:inputText id="itCpf"
-										value="#{contadorController.entity.cpf}" />
-
-									<p:outputLabel value="Data de Aniversário:" />
-									<p:calendar
-										value="#{contadorController.entity.dataAniversario}"
+									<p:outputLabel value="Data de Emissão:" />
+									<p:calendar value="#{liquidacaoController.entity.dataEmissao}"
 										pattern="dd/MM/yyyy" />
 
-									<p:outputLabel value="E-mail:" />
-									<p:inputText value="#{contadorController.entity.email}" />
 
-									<p:outputLabel value="Senha:" />
-									<p:inputText value="#{contadorController.entity.senha}" />
 
-									<p:outputLabel value="Tipo de Usuário:" />
-									<p:selectOneMenu
-										value="#{contadorController.entity.tipoUsuario}">
-										<f:selectItem itemLabel="Selecione ..." itemValue="" />
-										<f:selectItems value="#{contadorController.listaTipoUsuario}"
-											var="tipo" itemLabel="#{tipo.label}" itemValue="#{tipo}" />
-									</p:selectOneMenu>
+
+
+
+									<h:panelGrid columns="1">
+
+										<div class="ui-inputgroup">
+											<p:commandButton value="Pesquisar"
+												actionListener="#{liquidacaoController.abrirEmpenhoListing}"
+												process="@this" update="@none">
+												<p:ajax event="dialogReturn"
+													listener="#{liquidacaoController.obterEmpenhoListing}"
+													update="itEmpenho" />
+												<p:message for="itEmpenho" escape="false" />
+											</p:commandButton>
+											<p:inputText id="itEmpenho"
+												value="#{liquidacaoController.entity.empenho.produtoServico}"
+												required="true" requiredMessage="Informe a empenho."
+												placeholder="Empenho" size="138" />
+										</div>
+									</h:panelGrid>
+
+
+
 
 
 
@@ -113,25 +108,25 @@
 						<f:facet name="left">
 							<p:commandButton value="Salvar" icon="pi pi-check"
 								process="@form" update="@form"
-								action="#{contadorController.salvar}" />
+								action="#{liquidacaoController.salvar}" />
 
 							<p:commandButton value="Limpar" process="@this" update="panel"
-								action="#{contadorController.limpar}">
+								action="#{liquidacaoController.limpar}">
 								<p:ajax update="@form" resetValues="true" />
 							</p:commandButton>
 
 						</f:facet>
 
 						<f:facet name="right">
-							<p:commandButton value="Gerar PDF de todos os Contadores"
+							<p:commandButton value="Gerar PDF de todos os Liquidações"
 								process="@this"
-								actionListener="#{contadorController.abrirRelatorioContadores()}"
+								actionListener="#{liquidacaoController.abrirRelatorioLiquidacoes()}"
 								onclick="this.form.target='_blank'">
 							</p:commandButton>
 
 							<p:commandButton value="Excluir" icon="pi pi-trash"
 								process="@form" update="panel"
-								action="#{contadorController.excluir}">
+								action="#{liquidacaoController.excluir}">
 								<p:confirm header="Confirmação" message="Confirma a exclusão?" />
 							</p:commandButton>
 						</f:facet>
@@ -144,6 +139,8 @@
 					<p:commandButton value="Não" type="button"
 						styleClass="ui-confirmdialog-no" />
 				</p:confirmDialog>
+
+
 			</div>
 		</h:form>
 

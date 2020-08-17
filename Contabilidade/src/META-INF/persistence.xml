@@ -9,7 +9,6 @@
 		<class>converter.jpa.ConverterTipoPoder</class>
 		<class>model.Contador</class>
 		<class>model.DefaultEntity</class>
-		<class>model.Telefone</class>
 		<class>model.FornecedorCredor</class>
 		<class>model.Organizacao</class>
 		<class>model.ClassificacaoOrcamentaria</class>
