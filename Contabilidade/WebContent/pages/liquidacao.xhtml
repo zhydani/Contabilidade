@@ -66,8 +66,8 @@
 									<p:outputLabel value="Valor: ">
 										<p:message for="itValor" escape="false" />
 									</p:outputLabel>
-									<p:inputText id="itValor"
-										value="#{liquidacaoController.entity.valor}" />
+									<p:inputNumber id="itValor"
+										value="#{liquidacaoController.entity.valor}" symbol="R$ "/>
 
 									<p:outputLabel value="Data de Emissão:" />
 									<p:calendar value="#{liquidacaoController.entity.dataEmissao}"
