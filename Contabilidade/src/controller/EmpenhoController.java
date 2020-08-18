@@ -8,6 +8,7 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import controller.listing.ClassificacaoOrcamentariaListing;
+import controller.listing.EmpenhoListing;
 import controller.listing.FornecedorCredorListing;
 import controller.listing.OrganizacaoListing;
 //import controller.listing.EmpenhoListing;
@@ -43,10 +44,10 @@ public class EmpenhoController extends Controller<Empenho> {
 //		super.salvar();
 //	}
 	
-//	public void abrirEmpenhoListing() {
-//		EmpenhoListing listing = new EmpenhoListing();
-//		listing.open();
-//	}
+	public void abrirEmpenhoListing() {
+		EmpenhoListing listing = new EmpenhoListing();
+		listing.open();
+	}
 	
 	public void obterEmpenhoListing(SelectEvent event) {
         Empenho entity = (Empenho) event.getObject();
