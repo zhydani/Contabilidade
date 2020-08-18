@@ -56,11 +56,18 @@
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
-									<p:outputLabel value="Número: ">
-										<p:message for="itNumero" escape="false" />
-									</p:outputLabel>
+									<p:commandLink value="Número: "
+										actionListener="#{liquidacaoController.abrirLiquidacaoListing}"
+										process="@this" update="@none">
+
+										<p:ajax event="dialogReturn"
+											listener="#{liquidacaoController.obterLiquidacaoListing}"
+											update="@form" />
+
+									</p:commandLink>
 									<p:inputText id="itNumero"
-										value="#{liquidacaoController.entity.numero}" />
+										value="#{liquidacaoController.entity.numero}" required="true"
+										requiredMessage="Informe o número." />
 
 
 									<p:outputLabel value="Valor: ">

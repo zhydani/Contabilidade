@@ -56,12 +56,18 @@
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
-									<p:outputLabel value="Número: ">
-										<p:message for="itNumero" escape="false" />
-									</p:outputLabel>
-									<p:inputText id="itNumero"
-										value="#{pagamentoController.entity.numero}" />
+									<p:commandLink value="Número: "
+										actionListener="#{pagamentoController.abrirPagamentoListing}"
+										process="@this" update="@none">
 
+										<p:ajax event="dialogReturn"
+											listener="#{pagamentoController.obterPagamentoListing}"
+											update="@form" />
+
+									</p:commandLink>
+									<p:inputText id="itNumero"
+										value="#{pagamentoController.entity.numero}" required="true"
+										requiredMessage="Informe o número." />
 
 									<p:outputLabel value="Valor: ">
 										<p:message for="itValor" escape="false" />

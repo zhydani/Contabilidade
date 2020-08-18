@@ -8,8 +8,11 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 
 import controller.listing.EmpenhoListing;
+import controller.listing.LiquidacaoListing;
+import controller.listing.PagamentoListing;
 import model.Empenho;
 import model.Liquidacao;
+import model.Pagamento;
 import repository.EmpenhoRepository;
 
 @Named
@@ -21,6 +24,20 @@ public class LiquidacaoController extends Controller<Liquidacao> {
 	private String filtro;
 	private List<Empenho> listaEmpenho;
 	
+	public void abrirLiquidacaoListing() {
+		LiquidacaoListing listing = new LiquidacaoListing();
+		listing.open();
+	}
+	
+	public void obterLiquidacaoListing(SelectEvent event) {
+		Liquidacao entity = (Liquidacao) event.getObject();
+        setEntity(entity);
+    	if (getEntity().getEmpenho() == null) {
+			getEntity().setEmpenho(new Empenho());
+    		
+    	}
+    	
+    }
 	
 	@Override
 	public Liquidacao getEntity() {
