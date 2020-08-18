@@ -1,6 +1,5 @@
 package model.validation;
 
-import java.time.LocalDate;
 
 import application.ValidationException;
 import model.FornecedorCredor;

@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.Entity;
 
+import model.validation.FornecedorCredorValidation;
 import model.validation.Validation;
 
 @Entity
@@ -14,8 +15,7 @@ public class FornecedorCredor extends DefaultEntity<FornecedorCredor>{
 
 	@Override
 	public Validation<FornecedorCredor> getValidation() {
-		// TODO Auto-generated method stub
-		return null;
+		return new FornecedorCredorValidation();
 	}
 
 	public String getNome() {
