@@ -2,16 +2,29 @@ package model;
 
 import javax.persistence.Entity;
 
+import javax.validation.constraints.NotEmpty;
+
 import model.validation.Validation;
 
 @Entity
 public class ClassificacaoOrcamentaria extends DefaultEntity<ClassificacaoOrcamentaria> {
 	
+	@NotEmpty(message = "O campo Número não pode ser vazio")
 	private String numero;
+	
+	@NotEmpty(message = "O campo Função não pode ser vazio")
 	private String funcao;
+	
+	@NotEmpty(message = "O campo SubFunção não pode ser vazio")
 	private String subfuncao;
+	
+	@NotEmpty(message = "O campo Unidade não pode ser vazio")
 	private String unidade;
+	
+	@NotEmpty(message = "O campo Natureza não pode ser vazio")
 	private String natureza;
+	
+	@NotEmpty(message = "O campo Fonte não pode ser vazio")
 	private String fonte;
 	
 	private static final long serialVersionUID = 473322097651004478L;

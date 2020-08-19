@@ -2,11 +2,14 @@ package model;
 
 import javax.persistence.Entity;
 
+import javax.validation.constraints.NotEmpty;
+
 import model.validation.Validation;
 
 @Entity
 public class Organizacao extends DefaultEntity<Organizacao> {
 
+	@NotEmpty(message = "O campo Nome não pode ser vazio")
 	private String nome;
 	private TipoEsfera tipoEsfera;
 	private TipoPoder tipoPoder;

@@ -2,13 +2,18 @@ package model;
 
 import javax.persistence.Entity;
 
+import javax.validation.constraints.NotEmpty;
+
 import model.validation.FornecedorCredorValidation;
 import model.validation.Validation;
 
 @Entity
 public class FornecedorCredor extends DefaultEntity<FornecedorCredor>{
 
+	@NotEmpty(message = "O campo Nome não pode ser vazio")
 	private String nome;
+	
+	@NotEmpty(message = "O campo CPF/CNPJ não pode ser vazio")
 	private String cpfCnpj;
 	
 	private static final long serialVersionUID = 7039546790309972247L;
