@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import model.validation.ContadorValidation;
 import model.validation.Validation;
 
 @Entity
@@ -61,7 +62,7 @@ public class Contador extends DefaultEntity<Contador> {
 
 	@Override
 	public Validation<Contador> getValidation() {
-		return null;
+		return new ContadorValidation();
 	}
 
 	public String getSenha() {
