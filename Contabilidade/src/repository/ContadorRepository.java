@@ -1,5 +1,6 @@
 package repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -63,7 +64,27 @@ public class ContadorRepository extends Repository<Contador> {
 			e.printStackTrace();
 			return null;
 		}
+			
+	}
+	
+	public boolean contains(String crc, String cpf) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT");
+		sql.append("  count(*) ");
+		sql.append("FROM");
+		sql.append("  Contador p ");
+		sql.append("WHERE ");
+		sql.append(" upper(p.crc) = upper(?) ");
+		sql.append(" AND p.cpf <> ? ");
 		
+		Query query = getEntityManager().createNativeQuery(sql.toString());
+		
+		query.setParameter(1, crc);
+		query.setParameter(2, cpf == null ? -1 : cpf);
+		
+		BigInteger resultado = (BigInteger) query.getSingleResult();
+		
+		return (resultado == null || resultado.equals(BigInteger.ZERO))? false : true ;
 	}
 	
 }
