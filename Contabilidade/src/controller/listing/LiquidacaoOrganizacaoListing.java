@@ -11,6 +11,7 @@ import javax.inject.Named;
 import org.primefaces.PrimeFaces;
 
 import model.Liquidacao;
+import model.TipoEsfera;
 import repository.LiquidacaoRepository;
 
 @Named
@@ -51,6 +52,10 @@ public class LiquidacaoOrganizacaoListing extends Listing<Liquidacao> {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+	
+	public TipoEsfera[] getListaTipoEsfera() {
+		return TipoEsfera.values();
 	}
 
 }

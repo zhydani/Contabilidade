@@ -16,6 +16,10 @@ public class EmpenhoRepository extends Repository<Empenho> {
 		return findByOrganizacao(nome, null);
 	}
 	
+	public List<Empenho> findAll(Integer maxResults) {
+		return findAll(null);
+	}
+	
 	public List<Empenho> findByNumero(String numero, Integer maxResults) {
 
 		StringBuffer jpql = new StringBuffer();
@@ -68,5 +72,26 @@ public class EmpenhoRepository extends Repository<Empenho> {
 
 		return (Double) query.getSingleResult();
 	}
+	
+	public List<Empenho> findAll() {
+
+		StringBuffer jpql = new StringBuffer();
+		jpql.append("SELECT ");
+		jpql.append("  * ");
+		jpql.append("FROM ");
+		jpql.append(" Empenho e ");
+//		jpql.append("WHERE ");
+//		jpql.append("  upper(e.numero) like upper(:numero) ");
+//		jpql.append("ORDER BY e.numero ");
+
+		Query query = getEntityManager().createQuery(jpql.toString());
+//		query.setParameter("numero", "%" + numero + "%");
+//		if (maxResults != null && maxResults > 0 )
+//			query.setMaxResults(maxResults);
+
+		return query.getResultList();
+	}
+	
+	
 	
 }

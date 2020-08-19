@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -11,7 +12,9 @@ import javax.inject.Named;
 import org.primefaces.PrimeFaces;
 
 import model.Empenho;
+import model.Organizacao;
 import repository.EmpenhoRepository;
+import repository.OrganizacaoRepository;
 
 @Named
 @ViewScoped
@@ -32,8 +35,18 @@ public class EmpenhoOrganizacaoListing extends Listing<Empenho> {
 		setValor(repo.findByOrganizacao(getFiltro()));
 	}
 	
+	public List<Organizacao> completeTheme(String query) {
+		OrganizacaoRepository repo = new OrganizacaoRepository();
+		if (repo.findAll() != null) {
+			String queryLowerCase = query.toLowerCase();
+			List<Organizacao> orgs = repo.findAll();
+			return orgs.stream().filter(t -> t.getNome().toLowerCase().startsWith(queryLowerCase))
+					.collect(Collectors.toList());
+		}
+		return null;
+	}
 	
-	
+
 
 	public String getFiltro() {
 		return filtro;

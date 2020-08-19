@@ -14,6 +14,7 @@ public class Contador extends DefaultEntity<Contador> {
 
 	private static final long serialVersionUID = 4549513125939281216L;
 
+	
 	@Column(length = 100, nullable = false)
 	private String nome;
 

@@ -1,7 +1,6 @@
 package repository;
 
 import java.util.List;
-import java.math.BigInteger;
 
 import javax.persistence.Query;
 
@@ -32,5 +31,17 @@ public class OrganizacaoRepository extends Repository<Organizacao> {
 		return query.getResultList();
 	}
 	
+	public List<Organizacao> findAll() {
+
+		StringBuffer jpql = new StringBuffer();
+		jpql.append("SELECT ");
+		jpql.append("  * ");
+		jpql.append("FROM ");
+		jpql.append(" Organizacao o ");
+
+		Query query = getEntityManager().createQuery(jpql.toString());
+
+		return query.getResultList();
+	}
 	
 }
