@@ -20,11 +20,7 @@ public class Contador extends DefaultEntity<Contador> {
 
 	private static final long serialVersionUID = 4549513125939281216L;
 
-<<<<<<< HEAD
-	
-=======
 	@NotEmpty(message = "O campo Nome não pode ser vazio")
->>>>>>> branch 'master' of https://github.com/zhydani/Contabilidade.git
 	@Column(length = 100, nullable = false)
 	private String nome;
 
