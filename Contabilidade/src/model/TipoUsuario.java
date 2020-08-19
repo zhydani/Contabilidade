@@ -33,6 +33,7 @@ public enum TipoUsuario {
 			paginasAcesso.add("pages/classificacaoorcamentarialisting.xhtml");
 			paginasAcesso.add("pages/fornecedor-credor.xhtml");
 			paginasAcesso.add("pages/fornecedorcredorlisting.xhtml");
+			paginasAcesso.add("pages/perfil.xhtml");
 		} else {
 			paginasAcesso.add("pages/index.xhtml");
 			paginasAcesso.add("pages/empenho.xhtml");
@@ -41,6 +42,7 @@ public enum TipoUsuario {
 			paginasAcesso.add("pages/liquidacaolisting.xhtml");
 			paginasAcesso.add("pages/pagamento.xhtml");
 			paginasAcesso.add("pages/pagamentolisting.xhtml");
+			paginasAcesso.add("pages/perfil.xhtml");
 			
 		}
 		

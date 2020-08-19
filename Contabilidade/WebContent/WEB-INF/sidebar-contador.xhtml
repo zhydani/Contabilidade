@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ph="http://primefaces.org/harmony">
+
+	<p:sidebar widgetVar="sidebar1" baseZIndex="10000" id="sidebar"
+		class="bg-dark mt-0 text-white wrapper">
+
+
+		<div class="bg-dark mt-0 text-white wrapper" id="sidebar">
+
+			<nav id="sidebar">
+				<div class="sidebar-header ">
+					<p:graphicImage name="layout/images/logo_unitins.png"
+						styleClass="topbar-logo" />
+				</div>
+
+				<ul class="list-unstyled components ">
+					<h:form>
+						<h:panelGrid columns="2">
+							<h:graphicImage class="ml-2 pb-3 mr-2" width="30px"
+								library="images" name="usu.png" />
+
+							<h:outputLabel value=" #{templateController.usuarioLogado.nome}"
+								class="font-weight-bold mb-3" />
+
+
+						</h:panelGrid>
+						<li><a href="index.xhtml">Início</a></li>
+						<li><h:link outcome="/pages/classificacao-orcamentaria">
+								<span>Cadastro de Classificacao Orcamentaria</span>
+							</h:link></li>
+						<li><h:link outcome="/pages/empenho">
+								<span>Cadastro de Empenho</span>
+							</h:link></li>
+							<li><h:link outcome="/pages/liquidacao">
+								<span>Cadastro de Liquidação</span>
+							</h:link></li>
+							<li><h:link outcome="/pages/pagamento">
+								<span>Cadastro de Pagamento</span>
+							</h:link></li>
+						<li><h:commandLink value="Sair"
+								action="#{templateController.encerrarSessao}" class="nav-link" /></li>
+					</h:form>
+				</ul>
+
+
+			</nav>
+		</div>
+
+
+
+	</p:sidebar>
+</ui:composition>
