@@ -8,7 +8,9 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.file.UploadedFile;
 
 import application.Util;
 import controller.listing.ContadorListing;
@@ -27,13 +29,36 @@ public class ContadorController extends Controller<Contador> {
 	private InputStream fotoInputStream = null;
 	private String nomeFoto = null;
 
+public void upload(FileUploadEvent event) {
+		
+		UploadedFile uploadFile =  event.getFile();
+		System.out.println("nome arquivo: "+ uploadFile.getFileName());
+		System.out.println("tipo: "+ uploadFile.getContentType());
+		System.out.println("tamanho: "+ uploadFile.getSize());
+		
+		if (uploadFile.getContentType().equals("image/png")) {
+			try {
+				fotoInputStream = uploadFile.getInputStream();
+				nomeFoto = uploadFile.getFileName();
+				System.out.println("inputStream: "+ uploadFile.getInputStream().toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Util.addMessageInfo("Upload realizado com sucesso.");
+		} else {
+			Util.addMessageError("O tipo da image deve ser png.");
+		}
+        
+    }
 	
 	public String getNomeFoto() {
-		if (nomeFoto == null)
+		if (nomeFoto == null) 
 			return "Selecione uma foto ...";
-		return "Arquivo: " + nomeFoto + " (Clique para alterar a foto...)";
+		return "Arquivo: "+ nomeFoto + " (Clique para alterar a foto...)";
 	}
-
+	
+	
 	@Override
 	public void limpar() {
 		// TODO Auto-generated method stub
@@ -41,7 +66,7 @@ public class ContadorController extends Controller<Contador> {
 		fotoInputStream = null;
 		nomeFoto = null;
 	}
-
+	
 	@Override
 	public void salvar() {
 		// salvando no banco de dados
@@ -65,6 +90,44 @@ public class ContadorController extends Controller<Contador> {
 		}
 		Util.addMessageError("Erro ao efetuar o cadastro do contador.");
 	}
+	
+//	public String getNomeFoto() {
+//		if (nomeFoto == null)
+//			return "Selecione uma foto ...";
+//		return "Arquivo: " + nomeFoto + " (Clique para alterar a foto...)";
+//	}
+//
+//	@Override
+//	public void limpar() {
+//		// TODO Auto-generated method stub
+//		super.limpar();
+//		fotoInputStream = null;
+//		nomeFoto = null;
+//	}
+//
+//	@Override
+//	public void salvar() {
+//		// salvando no banco de dados
+//		if (salvarEspecial()) {
+//			// caso nao tenha selecionado a imagem sair do metodo
+//			if (fotoInputStream == null) {
+//				limpar();
+//				Util.addMessageInfo("Cadastro realizado com sucesso");
+//				return;
+//			}
+//			// salvar a foto do contador
+//			if (Util.saveImageContador(fotoInputStream, "png", getEntity().getId())) {
+//				limpar();
+//				Util.addMessageInfo("Cadastro realizado com sucesso");
+//				return;
+//			} else {
+//				limpar();
+//				Util.addMessageWarn("O Cadastro foi realizado com sucesso, porem a foto nao foi salva.");
+//				return;
+//			}
+//		}
+//		Util.addMessageError("Erro ao efetuar o cadastro do contador.");
+//	}
 
 	public void pesquisar() {
 		ContadorRepository repo = new ContadorRepository();

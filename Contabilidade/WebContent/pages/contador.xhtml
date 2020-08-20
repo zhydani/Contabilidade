@@ -42,6 +42,11 @@
 			<div class="container mb-5 pb-5">
 				<div class="border-left mb-4 ">
 					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Contador</h4>
+					<div align="right" style="float: right; position: relative;">
+							<img class="img-responsive"
+						     style="max-width: 80px!important;max-height: 80px!important;"            
+						     src="/Contabilidade/faces/img-contador?nome=#{contadorController.entity.id}.png"/>
+						</div>
 				</div>
 				<p:growl id="growl" globalOnly="false" />
 				<p:panel id="panel">
@@ -99,7 +104,15 @@
 											var="tipo" itemLabel="#{tipo.label}" itemValue="#{tipo}" />
 									</p:selectOneMenu>
 
-
+								<h:form enctype="multipart/form-data"> 
+									<p:fileUpload listener="#{contadorController.upload}" 
+												  label="#{contadorController.nomeFoto}"
+												  mode="advanced"
+								                  update="@this messages" 
+								                  auto="false" sizeLimit="200000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+								         
+								    <p:growl id="messages" showDetail="true" /> 
+								</h:form>
 
 
 								</p:panelGrid>

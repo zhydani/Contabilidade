@@ -32,11 +32,11 @@ public class ImgContadorServlet extends HttpServlet {
         // recebendo o nome da imagem 
         String nome = request.getParameter("nome");
         
-        // /home/janio/images/contador/
+        // /home/cont/images/contador/
         String diretorio = System.getProperty("user.home") + File.separator + Util.PATH_IMAGES_CONTADOR + File.separator;
         
         // montando a imagem com e endereco do servidor
-        // /home/janio/images/contador/2.png
+        // /home/cont/images/contador/2.png
         File image = new File(diretorio + nome);
         
         // se o nome da imagem for nulo ou se a imagem nao existir, enviar uma imagem padrao
@@ -66,4 +66,3 @@ public class ImgContadorServlet extends HttpServlet {
         Files.copy(image.toPath(), response.getOutputStream());
     }
 }
-
