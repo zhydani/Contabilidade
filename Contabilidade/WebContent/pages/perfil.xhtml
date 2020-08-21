@@ -41,7 +41,7 @@
 		<h:form>
 			<div class="container mb-5 pb-5">
 				<div class="border-left mb-4 ">
-					<h4 class="ml-3 py-2 font-weight-bold">Cadastro de Contador</h4>
+					<h4 class="ml-3 py-2 font-weight-bold">Alteração de Senha</h4>
 				</div>
 				<p:growl id="growl" globalOnly="false" />
 				<p:panel id="panel">
@@ -55,51 +55,13 @@
 							<div class="card card-w-title">
 								<p:panelGrid columns="1"
 									styleClass="form-group ui-panelgrid-blank" layout="grid">
-									<p:commandLink value="Nome: "
-										actionListener="#{contadorController.abrirContadorListing}"
-										process="@this" update="@none">
+									
 
-										<p:ajax event="dialogReturn"
-											listener="#{contadorController.obterContadorListing}"
-											update="@form" />
-
-									</p:commandLink>
-									<p:inputText id="itNome"
-										value="#{contadorController.entity.nome}" required="true"
-										requiredMessage="Informe o nome." />
-
-									<p:outputLabel value="CRC: ">
-										<p:message for="itCrc" escape="false" />
-									</p:outputLabel>
-									<p:inputText id="itCrc"
-										value="#{contadorController.entity.crc}" />
-
-									<p:outputLabel value="CPF: ">
-										<p:message for="itCpf" escape="false" />
-									</p:outputLabel>
-									<p:inputMask id="itCpf"
-										value="#{contadorController.entity.cpf}" mask="999.999.999-99"/>
-
-									<p:outputLabel value="Data de Aniversário:" />
-									<p:calendar
-										value="#{contadorController.entity.dataAniversario}"
-										pattern="dd/MM/yyyy" />
-
-									<p:outputLabel value="E-mail:" />
-									<p:inputText value="#{contadorController.entity.email}"/>
-
-									<p:outputLabel value="Senha:" />
-									<p:inputText value="#{contadorController.entity.senha}" />
-
-									<p:outputLabel value="Tipo de Usuário:" />
-									<p:selectOneMenu
-										value="#{contadorController.entity.tipoUsuario}">
-										<f:selectItem itemLabel="Selecione ..." itemValue="" />
-										<f:selectItems value="#{contadorController.listaTipoUsuario}"
-											var="tipo" itemLabel="#{tipo.label}" itemValue="#{tipo}" />
-									</p:selectOneMenu>
-
-
+									<p:outputLabel value="Senha antiga:" />
+									<p:inputText value="#{perfilController.senha}" />
+									
+									<p:outputLabel value="Nova senha:" />
+									<p:inputText value="#{perfilController.novasenha}" />
 
 
 								</p:panelGrid>
@@ -112,26 +74,16 @@
 						<f:facet name="left">
 							<p:commandButton value="Salvar" icon="pi pi-check"
 								process="@form" update="@form"
-								action="#{contadorController.salvar}" />
+								action="#{perfilController.update}" />
 
-							<p:commandButton value="Limpar" process="@this" update="panel"
-								action="#{contadorController.limpar}">
-								<p:ajax update="@form" resetValues="true" />
-							</p:commandButton>
+							
 
 						</f:facet>
 
 						<f:facet name="right">
-							<p:commandButton value="Gerar PDF de todos os Contadores"
-								process="@this"
-								actionListener="#{contadorController.abrirRelatorioContadores()}"
-								onclick="this.form.target='_blank'">
-							</p:commandButton>
-
-							<p:commandButton value="Excluir" icon="pi pi-trash"
-								process="@form" update="panel"
-								action="#{contadorController.excluir}">
-								<p:confirm header="Confirmação" message="Confirma a exclusão?" />
+							<p:commandButton value="Limpar" process="@this" update="panel"
+								action="#{contadorController.limpar}">
+								<p:ajax update="@form" resetValues="true" />
 							</p:commandButton>
 						</f:facet>
 					</p:toolbar>

@@ -45,6 +45,8 @@ public class Contador extends DefaultEntity<Contador> {
 	@Size(min = 6, max = 30, message = "A senha deve conter entre 6 e 10 caracteres")
 	private String senha;
 	
+	private Boolean ativo = Boolean.TRUE;
+	
 	private TipoUsuario tipoUsuario;
 
 	public String getNome() {
@@ -107,6 +109,14 @@ public class Contador extends DefaultEntity<Contador> {
 
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	

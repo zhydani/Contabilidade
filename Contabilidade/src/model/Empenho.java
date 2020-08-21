@@ -36,7 +36,7 @@ public class Empenho extends DefaultEntity<Empenho> {
 	@ManyToOne()
 	@JoinColumn(name = "idfornecedorcredor", nullable = true)
 	private FornecedorCredor fornecedorCredor;
-	
+
 	private static final long serialVersionUID = -1366382983361538372L;
 
 	@Override
